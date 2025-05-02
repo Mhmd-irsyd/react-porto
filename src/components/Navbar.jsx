@@ -1,29 +1,40 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { navLinks } from "../constants/navlinks";
-import { FaInstagram, FaXTwitter } from "react-icons/fa6"; // Impor hanya ikon Instagram dan XTwitter
+import { FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
-  const [scrolling, setScrolling] = useState(false); // Untuk mendeteksi scroll
+  const [scrolling, setScrolling] = useState(false);
 
-  // Menangani event scroll untuk menentukan status scrolling
+  const menuRef = useRef(); // Referensi untuk menu mobile
+
+  // Deteksi scroll agar navbar bisa blur/background berubah
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolling(true); // Mengubah status scrolling jika lebih dari 10px scroll
-      } else {
-        setScrolling(false);
-      }
+      setScrolling(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
-
-    // Cleanup event listener saat komponen dibersihkan
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Deteksi klik di luar menu untuk menutup dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setToggle(false);
+      }
+    };
+
+    if (toggle) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [toggle]);
 
   return (
     <motion.nav
@@ -38,7 +49,7 @@ const Navbar = () => {
         {/* Kiri - Logo */}
         <h1 className="text-xl font-bold text-white">Irsyad.dev</h1>
 
-        {/* Tengah - Nav Links */}
+        {/* Tengah - Nav Links Desktop */}
         <ul className="hidden md:flex gap-8">
           {navLinks.map((link) => (
             <li key={link.id}>
@@ -55,7 +66,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Kanan - Social Icons */}
+        {/* Kanan - Ikon Sosial Desktop */}
         <div className="hidden md:flex gap-4 text-xl text-gray-200">
           <a
             href="https://www.instagram.com/muhmd.irsyd/"
@@ -75,7 +86,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Tombol Burger Menu Mobile */}
         <div className="md:hidden relative">
           <motion.button
             onClick={() => setToggle(!toggle)}
@@ -85,9 +96,10 @@ const Navbar = () => {
             {toggle ? "✖" : "☰"}
           </motion.button>
 
-          {/* Mobile Dropdown */}
+          {/* Dropdown Menu Mobile */}
           {toggle && (
             <motion.div
+              ref={menuRef}
               className="absolute right-0 top-16 bg-white rounded-lg shadow-lg p-6 w-52 max-w-xs"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -104,7 +116,9 @@ const Navbar = () => {
                         setActive(link.title);
                       }}
                       className={`${
-                        active === link.title ? "text-blue-600" : "text-gray-700"
+                        active === link.title
+                          ? "text-blue-600"
+                          : "text-gray-700"
                       } hover:text-blue-500 transition duration-300 font-medium`}
                     >
                       {link.title}
@@ -113,8 +127,22 @@ const Navbar = () => {
                 ))}
               </ul>
               <div className="flex gap-4 text-xl text-gray-700 justify-center">
-                <FaInstagram className="hover:text-pink-500 cursor-pointer" />
-                <FaXTwitter className="hover:text-black cursor-pointer" />
+                <a
+                  href="https://www.instagram.com/muhmd.irsyd/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-pink-500 transition duration-300"
+                >
+                  <FaInstagram />
+                </a>
+                <a
+                  href="https://x.com/Muhamma75082480"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black transition duration-300"
+                >
+                  <FaXTwitter />
+                </a>
               </div>
             </motion.div>
           )}
