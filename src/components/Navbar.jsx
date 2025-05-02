@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { navLinks } from "../constants/navlinks";
 import { FaInstagram, FaXTwitter } from "react-icons/fa6";
 
@@ -7,8 +7,7 @@ const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-
-  const menuRef = useRef(); // Referensi untuk menu mobile
+  const menuRef = useRef(); // Referensi gabungan: tombol dan menu mobile
 
   // Deteksi scroll agar navbar bisa blur/background berubah
   useEffect(() => {
@@ -86,8 +85,8 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Tombol Burger Menu Mobile */}
-        <div className="md:hidden relative">
+        {/* Tombol Burger + Menu Mobile */}
+        <div className="md:hidden relative" ref={menuRef}>
           <motion.button
             onClick={() => setToggle(!toggle)}
             className="text-2xl focus:outline-none"
@@ -97,55 +96,57 @@ const Navbar = () => {
           </motion.button>
 
           {/* Dropdown Menu Mobile */}
-          {toggle && (
-            <motion.div
-              ref={menuRef}
-              className="absolute right-0 top-16 bg-white rounded-lg shadow-lg p-6 w-52 max-w-xs"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ul className="flex flex-col gap-4 mb-4">
-                {navLinks.map((link) => (
-                  <li key={link.id}>
-                    <a
-                      href={`#${link.id}`}
-                      onClick={() => {
-                        setToggle(false);
-                        setActive(link.title);
-                      }}
-                      className={`${
-                        active === link.title
-                          ? "text-blue-600"
-                          : "text-gray-700"
-                      } hover:text-blue-500 transition duration-300 font-medium`}
-                    >
-                      {link.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex gap-4 text-xl text-gray-700 justify-center">
-                <a
-                  href="https://www.instagram.com/muhmd.irsyd/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-pink-500 transition duration-300"
-                >
-                  <FaInstagram />
-                </a>
-                <a
-                  href="https://x.com/Muhamma75082480"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-black transition duration-300"
-                >
-                  <FaXTwitter />
-                </a>
-              </div>
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {toggle && (
+              <motion.div
+                key="mobile-menu"
+                className="absolute right-0 top-16 bg-white rounded-lg shadow-lg p-6 w-52 max-w-xs"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ul className="flex flex-col gap-4 mb-4">
+                  {navLinks.map((link) => (
+                    <li key={link.id}>
+                      <a
+                        href={`#${link.id}`}
+                        onClick={() => {
+                          setToggle(false);
+                          setActive(link.title);
+                        }}
+                        className={`${
+                          active === link.title
+                            ? "text-blue-600"
+                            : "text-gray-700"
+                        } hover:text-blue-500 transition duration-300 font-medium`}
+                      >
+                        {link.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex gap-4 text-xl text-gray-700 justify-center">
+                  <a
+                    href="https://www.instagram.com/muhmd.irsyd/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-pink-500 transition duration-300"
+                  >
+                    <FaInstagram />
+                  </a>
+                  <a
+                    href="https://x.com/Muhamma75082480"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-black transition duration-300"
+                  >
+                    <FaXTwitter />
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </motion.nav>

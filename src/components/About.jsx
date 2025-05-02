@@ -169,7 +169,7 @@ const About = () => {
         },
         {
           title: "Full-Stack Web Developer Intern – PT Yodya Karya",
-          time: "April 2021 – July 2021",
+          time: "April 2025 – July 2025",
           description: "Bertanggung jawab dalam pengembangan website Engineering Hub selama 3 bulan dengan menggunakan Laravel. Mengelola sisi backend seperti pengelolaan database, autentikasi, dan logika bisnis, sekaligus membangun antarmuka frontend yang responsif dan user-friendly. Pengalaman ini memperkuat pemahaman saya dalam membangun aplikasi web secara menyeluruh, mulai dari desain hingga implementasi.",
         },
       ].map((item, index) => (

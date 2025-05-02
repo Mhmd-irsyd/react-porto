@@ -24,7 +24,7 @@ const Contact = () => {
 
     emailjs
       .send(
-        "your_service_id", // ganti sesuai akun EmailJS kamu
+        "your_service_id",
         "your_template_id",
         {
           from_name: form.name,
