@@ -57,23 +57,22 @@ const Navbar = () => {
 
         {/* Kanan - Social Icons */}
         <div className="hidden md:flex gap-4 text-xl text-gray-200">
-        <a
-  href="https://www.instagram.com/muhmd.irsyd/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hover:text-pink-500 transition duration-300"
->
-  <FaInstagram />
-</a>
-<a
-  href="https://x.com/Muhamma75082480"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hover:text-black transition duration-300"
->
-  <FaXTwitter />
-</a>
-
+          <a
+            href="https://www.instagram.com/muhmd.irsyd/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-pink-500 transition duration-300"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://x.com/Muhamma75082480"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-black transition duration-300"
+          >
+            <FaXTwitter />
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -89,7 +88,7 @@ const Navbar = () => {
           {/* Mobile Dropdown */}
           {toggle && (
             <motion.div
-              className="absolute right-0 top-16 bg-white rounded-lg shadow-lg p-6 w-52"
+              className="absolute right-0 top-16 bg-white rounded-lg shadow-lg p-6 w-52 max-w-xs"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
