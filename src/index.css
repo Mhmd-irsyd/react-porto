@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+.motion-element {
+  will-change: transform, opacity;
+}
+
+
+/* Keyframe animation for the bubbles to move up and down */
+@keyframes bubbleMove {
+  0% {
+    transform: translateY(100vh); /* Memulai dari bawah layar */
+  }
+  50% {
+    transform: translateY(-150vh); /* Bergerak ke atas melampaui layar */
+  }
+  100% {
+    transform: translateY(100vh); /* Kembali ke bawah layar */
+  }
+}
+
+/* Styling for the bubbles */
+.bubble {
+  pointer-events: none; /* Menjaga gelembung tidak menghalangi interaksi dengan elemen lainnya */
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  animation: bubbleMove 8s infinite ease-in-out; /* Menambahkan animasi */
+}
+
+/* Adjusting size and positioning for different bubbles */
+.bubble:nth-child(1) {
+  width: 50px;
+  height: 50px;
+  left: 10%;
+  animation-duration: 8s; /* Custom duration for each bubble */
+}
+
+.bubble:nth-child(2) {
+  width: 60px;
+  height: 60px;
+  left: 30%;
+  animation-duration: 10s;
+}
+
+.bubble:nth-child(3) {
+  width: 40px;
+  height: 40px;
+  left: 60%;
+  animation-duration: 12s;
+}
+
+.bubble:nth-child(4) {
+  width: 70px;
+  height: 70px;
+  left: 80%;
+  animation-duration: 14s;
+}
