@@ -7,7 +7,7 @@ const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  const menuRef = useRef(); // Referensi gabungan: tombol dan menu mobile
+  const menuRef = useRef();
 
   // Deteksi scroll agar navbar bisa blur/background berubah
   useEffect(() => {

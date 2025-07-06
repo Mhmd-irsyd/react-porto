@@ -5,6 +5,8 @@ import Tilt from "react-parallax-tilt";
 import { FaReact, FaHtml5, FaCss3Alt, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { SiTailwindcss, SiFramer, SiJavascript } from "react-icons/si";
 import { Tooltip } from "react-tooltip";
+import ecommerceImage from "../assets/e-commerce.jpg"; 
+
 
 // Dummy project data
 const projectsData = [
@@ -22,7 +24,7 @@ const projectsData = [
     title: "Dashboard UI",
     description: "Interactive dashboard using modern design systems.",
     tech: ["React", "Tailwind", "JavaScript"],
-    image: "/images/dashboard.png",
+    image: "",
     demo: "https://dashboardapp.com",
     repo: "https://github.com/yourgithub/dashboard",
     video: "",
@@ -32,9 +34,9 @@ const projectsData = [
     title: "E-commerce App",
     description: "Fullstack app with product listing, authentication, and checkout features.",
     tech: ["React", "Tailwind", "JavaScript"],
-    image: "/images/ecommerce.png",
-    demo: "https://ecommerceapp.com",
-    repo: "https://github.com/yourgithub/ecommerce",
+   image: ecommerceImage,
+  demo: "https://loginhub-56411.firebaseapp.com/",
+    repo: "https://github.com/Mhmd-irsyd?tab=repositories",
     video: "",
     type: "Fullstack",
   },

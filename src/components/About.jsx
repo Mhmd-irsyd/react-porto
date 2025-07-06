@@ -4,6 +4,9 @@ import html5 from "../assets/html5.svg";
 import tailwind from "../assets/tailwind.svg";
 import javascript from "../assets/javascript.svg";
 import react from "../assets/react.svg";
+import css3 from "../assets/css.svg";
+import php from "../assets/php.svg";
+import laravel from "../assets/laravel.svg";
 
 const SectionTitle = ({ title }) => (
   <motion.h3 
@@ -17,25 +20,26 @@ const SectionTitle = ({ title }) => (
   </motion.h3>
 );
 
-const SkillCard = ({ icon, title, width }) => (
+const SkillCard = ({ icon, title, imgSize, barWidth }) => (
   <motion.div 
-  className="bg-[#1e293b] p-6 rounded-lg shadow-lg text-center"
-  initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, amount: 0.3 }}
-  transition={{ duration: 0.5 }}
->
-  <img 
-    src={icon} 
-    alt={title} 
-    className="w-16 h-16 mx-auto mb-4" 
-  />
-  <h4 className="text-xl font-semibold">{title}</h4>
-  <div className="w-full bg-gray-300 h-1 mt-2">
-    <div className={`bg-blue-500 h-1 ${width}`}></div>
-  </div>
-</motion.div>
+    className="bg-[#1e293b] p-6 rounded-lg shadow-lg text-center"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.5 }}
+  >
+    <img 
+      src={icon} 
+      alt={title} 
+      className={`${imgSize} mx-auto mb-4 object-contain`} 
+    />
+    <h4 className="text-xl font-semibold">{title}</h4>
+    <div className="w-full bg-gray-300 h-1 mt-2">
+      <div className={`bg-blue-500 h-1 ${barWidth}`} />
+    </div>
+  </motion.div>
 );
+
   
   
 
@@ -127,24 +131,29 @@ const About = () => {
       </div>
 
       {/* Skills Section */}
-      <motion.div 
-        className="mt-20 opacity-100 transform transition-all duration-400 ease-out"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5 }}
-      >
-        <SectionTitle title="Skills & Expertise" />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
-          {[{ icon: html5, title: "HTML5", width: "w-4/5" },
-            { icon: tailwind, title: "Tailwind CSS", width: "w-4/5" },
-            { icon: javascript, title: "JavaScript", width: "w-3/4" },
-            { icon: react, title: "React.js", width: "w-2/3" }]
-            .map((skill, index) => (
-              <SkillCard key={index} {...skill} />
-          ))}
-        </div>
-      </motion.div>
+<motion.div 
+  className="mt-20 opacity-100 transform transition-all duration-400 ease-out"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true, amount: 0.3 }}
+  transition={{ duration: 0.5 }}
+>
+  <SectionTitle title="Skills & Expertise" />
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
+    {[
+  { icon: html5, title: "HTML5", imgSize: "w-[60px] h-[60px]", barWidth: "w-4/5" },
+  { icon: tailwind, title: "Tailwind CSS", imgSize: "w-[60px] h-[60px]", barWidth: "w-4/5" },
+  { icon: javascript, title: "JavaScript", imgSize: "w-[60px] h-[60px]", barWidth: "w-3/4" },
+  { icon: react, title: "React.js", imgSize: "w-[60px] h-[60px]", barWidth: "w-2/3" },
+  { icon: css3, title: "CSS", imgSize: "w-[80px] h-[60px]", barWidth: "w-4/5" },
+  { icon: php, title: "PHP", imgSize: "w-[80px] h-[60px]", barWidth: "w-4/5" },
+  { icon: laravel, title: "Laravel", imgSize: "w-[95px] h-[65px]", barWidth: "w-3/4" },
+].map((skill, index) => (
+  <SkillCard key={index} {...skill} />
+))}
+  </div>
+</motion.div>
+
 
       {/* Experience Timeline */}
       <motion.div 
@@ -168,9 +177,9 @@ const About = () => {
           description: "Secara mandiri mengembangkan berbagai proyek web, termasuk landing page, website dinamis, dan situs e-commerce. Menggunakan teknologi seperti React, Tailwind CSS, dan Firebase untuk membangun aplikasi web responsif dan fungsional, serta terus meningkatkan keterampilan dalam pengembangan front-end dan back-end melalui proyek nyata dan tantangan pengembangan.",
         },
         {
-          title: "Full-Stack Web Developer Intern – PT Yodya Karya",
+          title: "Front-End Web Developer with Fullstack Capabilities Intern PT Yodya Karya",
           time: "April 2025 – July 2025",
-          description: "Bertanggung jawab dalam pengembangan website Engineering Hub selama 3 bulan dengan menggunakan Laravel. Mengelola sisi backend seperti pengelolaan database, autentikasi, dan logika bisnis, sekaligus membangun antarmuka frontend yang responsif dan user-friendly. Pengalaman ini memperkuat pemahaman saya dalam membangun aplikasi web secara menyeluruh, mulai dari desain hingga implementasi.",
+          description: "Bertanggung jawab sebagai Front-End Developer dalam pengembangan website Building Management selama 3 bulan menggunakan React.js, Laravel, dan Inertia.js. Saya membangun antarmuka pengguna yang responsif dan mudah digunakan untuk memudahkan petugas mengunggah bukti aktivitas gedung. Selain itu, saya juga terlibat secara ringan dalam pengelolaan sisi backend, seperti integrasi data dan autentikasi dasar. Proyek ini memperkuat keterampilan saya dalam membangun aplikasi web modern berbasis komponen dan terintegrasi penuh antara frontend dan backend.",
         },
       ].map((item, index) => (
         <TimelineItem
@@ -195,14 +204,14 @@ const About = () => {
           {[{
             title: "E-commerce Store",
             description: "A fully responsive e-commerce site with shopping cart functionality.",
-            link: "https://github.com/irsyad/e-commerce"
+            link: "https://loginhub-56411.firebaseapp.com/"
           }, {
             title: "Personal Portfolio",
             description: "A portfolio website to showcase my work and skills.",
-            link: "https://github.com/irsyad/portfolio"
+            link: "https://portofolio-one-eta.vercel.app/"
           }, {
-            title: "Engineering Hub Website",
-            description: "A web platform developed using Laravel with user management, authentication, and an admin dashboard for internal use at PT Yodya Karya.",
+            title: "Building Management Website",
+            description: "Built the front-end of a Building Management website using React.js, Laravel, and Inertia.js. Focused on creating a responsive and integrated UI, with light backend support for authentication and data flow.",
             link: "https://github.com/irsyad/blog"
           }].map((project, index) => (
             <ProjectCard key={index} {...project} />
