@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navLinks } from "../constants/navlinks";
 import { FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -63,6 +64,17 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+         <li>
+  <Link
+    to="/certificates"
+    onClick={() => setActive("Certificates")}
+    className={`${
+      active === "Certificates" ? "text-blue-600" : "text-gray-200"
+    } hover:text-blue-500 transition duration-300 font-medium`}
+  >
+    Certificates
+  </Link>
+</li>
         </ul>
 
         {/* Kanan - Ikon Sosial Desktop */}
@@ -125,6 +137,21 @@ const Navbar = () => {
                       </a>
                     </li>
                   ))}
+                 <li>
+  <Link
+    to="/certificates"
+    onClick={() => {
+      setActive("Certificates");
+      setToggle(false);
+    }}
+    className={`${
+      active === "Certificates" ? "text-blue-600" : "text-gray-700"
+    } hover:text-blue-500 transition duration-300 font-medium`}
+  >
+    Certificates
+  </Link>
+</li>
+
                 </ul>
                 <div className="flex gap-4 text-xl text-gray-700 justify-center">
                   <a
