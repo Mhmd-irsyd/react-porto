@@ -17,15 +17,17 @@ const Hero = () => {
       { size: 70, left: "80%", duration: "14s" },
     ].map((bubble, idx) => (
       <div
-        key={idx}
-        className="bubble bg-white opacity-40 absolute rounded-full"
-        style={{
-          width: `${bubble.size}px`,
-          height: `${bubble.size}px`,
-          left: bubble.left,
-          animation: `bubbleMove ${bubble.duration} infinite ease-in-out`,
-        }}
-      />
+  key={idx}
+  className="bg-white opacity-20 absolute rounded-full"
+  style={{
+    width: `${bubble.size}px`,
+    height: `${bubble.size}px`,
+    left: bubble.left,
+    top: "-50px", // <-- ubah ini, bukan bottom
+    animation: `bubbleMove ${bubble.duration} infinite linear`,
+  }}
+/>
+
     ))}
   </div>
 

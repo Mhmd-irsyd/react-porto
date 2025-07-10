@@ -47,13 +47,32 @@ const certificates = [
 const Certificates = () => {
   return (
     <div className="relative min-h-screen px-6 py-16 bg-gradient-to-br from-[#1e3a8a] via-emerald-900 to-slate-900 text-white overflow-hidden">
-      {/* Simplified glowing background without animation */}
-      <div className="absolute w-60 h-60 bg-blue-500 rounded-full opacity-20 blur-3xl top-0 left-0 pointer-events-none"></div>
-      <div className="absolute w-60 h-60 bg-emerald-400 rounded-full opacity-20 blur-3xl bottom-0 right-0 pointer-events-none"></div>
+      
+      {/* 🫧 Gelembung Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {[{ size: 50, left: "10%", duration: "8s" },
+          { size: 60, left: "30%", duration: "10s" },
+          { size: 40, left: "60%", duration: "12s" },
+          { size: 70, left: "80%", duration: "14s" },
+        ].map((bubble, idx) => (
+         <div
+  key={idx}
+  className="bg-white opacity-20 absolute rounded-full"
+  style={{
+    width: `${bubble.size}px`,
+    height: `${bubble.size}px`,
+    left: bubble.left,
+    top: "-50px", // <-- ubah ini, bukan bottom
+    animation: `bubbleMove ${bubble.duration} infinite linear`,
+  }}
+/>
 
-      {/* Content */}
+        ))}
+      </div>
+
+      {/* Judul dan Deskripsi */}
       <motion.h1
-        className="text-4xl font-bold text-center mb-2"
+        className="text-4xl font-bold text-center mb-2 z-10 relative"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -62,7 +81,7 @@ const Certificates = () => {
       </motion.h1>
 
       <motion.p
-        className="text-center text-emerald-200 mb-10"
+        className="text-center text-emerald-200 mb-10 z-10 relative"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
@@ -70,6 +89,7 @@ const Certificates = () => {
         Sertifikat pelatihan, webinar, dan bootcamp yang pernah saya ikuti.
       </motion.p>
 
+      {/* Grid Sertifikat */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10">
         {certificates.map((cert, index) => (
           <motion.div
