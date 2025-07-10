@@ -113,21 +113,23 @@ const Hero = () => {
 </motion.div>
 
 
-    {/* Center Image Section (Stiker Irsyad) */}
-    <motion.div
-      initial={{ x: 100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-      className="flex-1 flex justify-center order-1 lg:order-2 mb-8 lg:mb-0"
-    >
-      <div className="relative w-60 sm:w-72 md:w-80 lg:w-[400px] h-60 sm:h-72 md:h-80 lg:h-[400px] bg-gray-700 rounded-full flex justify-center items-center shadow-2xl hover:scale-105 transition duration-500 mx-auto">
-        <img
-          src={StikerPhoto}
-          alt="Irsyad Sticker"
-          className="w-full h-full object-cover rounded-full"
-        />
-      </div>
-    </motion.div>
+   {/* Center Image Section (Stiker Irsyad) */}
+<motion.div
+  initial={{ x: 100, opacity: 0 }}
+  animate={{ x: 0, opacity: 1 }}
+  transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+  className="flex-1 flex justify-center order-1 lg:order-2 mb-8 lg:mb-0"
+>
+  <div className="relative w-60 sm:w-72 md:w-80 lg:w-[400px] h-60 sm:h-72 md:h-80 lg:h-[400px] rounded-full ring-4 ring-gray-700 shadow-2xl hover:scale-105 transition duration-500 mx-auto">
+    <img
+      src={StikerPhoto}
+      alt="Irsyad Sticker"
+      className="w-full h-full object-cover rounded-full"
+    />
+  </div>
+</motion.div>
+
+
 
     {/* Welcome Section */}
     <motion.div
