@@ -1,15 +1,19 @@
+// src/App.jsx
 import { Routes, Route } from "react-router-dom";
+import AppLayout from "./layouts/AppLayout";
 import Home from "./pages/Home";
-import Certificates from "./pages/Certificates"; // ← Import page sertifikat
+import Certificates from "./pages/Certificates";
 
 function App() {
   return (
-    <div className="bg-[#0f172a] min-h-screen">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/certificates" element={<Certificates />} />
-      </Routes>
-    </div>
+    <Routes>
+      {/* Wrap semua page utama dengan AppLayout */}
+      <Route path="/" element={<AppLayout />}>
+        <Route index element={<Home />} />
+        <Route path="certificates" element={<Certificates />} />
+        {/* Tambah halaman lain di sini */}
+      </Route>
+    </Routes>
   );
 }
 

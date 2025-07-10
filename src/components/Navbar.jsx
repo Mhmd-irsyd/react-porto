@@ -53,15 +53,19 @@ const Navbar = () => {
         <ul className="hidden md:flex gap-8">
           {navLinks.map((link) => (
             <li key={link.id}>
-              <a
-                href={`#${link.id}`}
-                onClick={() => setActive(link.title)}
-                className={`${
-                  active === link.title ? "text-blue-600" : "text-gray-200"
-                } hover:text-blue-500 transition duration-300 font-medium`}
-              >
-                {link.title}
-              </a>
+             <Link
+  to="/"
+  onClick={() => {
+    localStorage.setItem("scrollTo", link.id);
+    setActive(link.title);
+  }}
+  className={`${
+    active === link.title ? "text-blue-600" : "text-gray-200"
+  } hover:text-blue-500 transition duration-300 font-medium`}
+>
+  {link.title}
+</Link>
+
             </li>
           ))}
          <li>
@@ -121,20 +125,20 @@ const Navbar = () => {
                 <ul className="flex flex-col gap-4 mb-4">
                   {navLinks.map((link) => (
                     <li key={link.id}>
-                      <a
-                        href={`#${link.id}`}
-                        onClick={() => {
-                          setToggle(false);
-                          setActive(link.title);
-                        }}
-                        className={`${
-                          active === link.title
-                            ? "text-blue-600"
-                            : "text-gray-700"
-                        } hover:text-blue-500 transition duration-300 font-medium`}
-                      >
-                        {link.title}
-                      </a>
+                     <Link
+  to="/"
+  onClick={() => {
+    localStorage.setItem("scrollTo", link.id);
+    setActive(link.title);
+    setToggle(false); // close burger menu after click
+  }}
+  className={`${
+    active === link.title ? "text-blue-600" : "text-gray-700"
+  } hover:text-blue-500 transition duration-300 font-medium`}
+>
+  {link.title}
+</Link>
+
                     </li>
                   ))}
                  <li>

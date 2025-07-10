@@ -1,11 +1,11 @@
 import React from "react";
-
-// Ganti dengan path gambar asli kamu
+import { motion } from "framer-motion";
 import img1 from "../assets/certificate1.png";
 import img2 from "../assets/certificate2.png";
 import img3 from "../assets/certificate3.png";
 import img4 from "../assets/certificate4.png";
 import img5 from "../assets/certificate5.png";
+
 const certificates = [
   {
     title: "Object Detection with Deep Learning",
@@ -46,22 +46,45 @@ const certificates = [
 
 const Certificates = () => {
   return (
-    <div className="min-h-screen px-6 py-16 bg-gradient-to-br from-[#1e3a8a] via-emerald-900 to-slate-900 text-white">
-      <h1 className="text-4xl font-bold text-center mb-2">My Certificates</h1>
-      <p className="text-center text-emerald-200 mb-10">
-        Sertifikat pelatihan, webinar, dan bootcamp yang pernah saya ikuti.
-      </p>
+    <div className="relative min-h-screen px-6 py-16 bg-gradient-to-br from-[#1e3a8a] via-emerald-900 to-slate-900 text-white overflow-hidden">
+      {/* Simplified glowing background without animation */}
+      <div className="absolute w-60 h-60 bg-blue-500 rounded-full opacity-20 blur-3xl top-0 left-0 pointer-events-none"></div>
+      <div className="absolute w-60 h-60 bg-emerald-400 rounded-full opacity-20 blur-3xl bottom-0 right-0 pointer-events-none"></div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      {/* Content */}
+      <motion.h1
+        className="text-4xl font-bold text-center mb-2"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        My Certificates
+      </motion.h1>
+
+      <motion.p
+        className="text-center text-emerald-200 mb-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+      >
+        Sertifikat pelatihan, webinar, dan bootcamp yang pernah saya ikuti.
+      </motion.p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10">
         {certificates.map((cert, index) => (
-          <div
+          <motion.div
             key={index}
-            className="bg-white/5 backdrop-blur-md shadow-xl rounded-2xl border border-white/10 hover:shadow-emerald-400/20 transition overflow-hidden"
+            className="bg-white/5 shadow-lg rounded-2xl border border-white/10 transition hover:shadow-emerald-400/30"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.4 }}
           >
             <img
               src={cert.image}
               alt={cert.title}
               className="w-full h-40 object-cover object-center"
+              loading="lazy"
             />
             <div className="p-6">
               <h3 className="text-lg font-semibold mb-1">{cert.title}</h3>
@@ -76,7 +99,7 @@ const Certificates = () => {
                 View Certificate
               </a>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
