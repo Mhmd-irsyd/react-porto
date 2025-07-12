@@ -48,17 +48,6 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 px-6 md:px-20 bg-gradient-to-br from-green-900 via-blue-900 to-black text-white relative">
       <Toaster position="top-right" />
-
-      {/* Floating Chat Button */}
-      <a
-        href="https://wa.me/089654619089"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 bg-green-500 p-3 rounded-full shadow-xl hover:scale-110 transition z-50"
-      >
-        <FaWhatsapp size={24} />
-      </a>
-
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}

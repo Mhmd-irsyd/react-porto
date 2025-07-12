@@ -8,37 +8,37 @@ import img5 from "../assets/certificate5.png";
 
 const certificates = [
   {
-    title: "Object Detection with Deep Learning",
-    issuer: "Langing Academy",
-    date: "March 2024",
+    title: "Introduction To CyberSecurity Course",
+    issuer: "Cisco Networking Academy",
+    date: "June,29 2024",
     link: "/certificates/certificate1.pdf",
     image: img1,
   },
   {
-    title: "Front-End Developer Bootcamp",
-    issuer: "BuildWith Angga",
-    date: "Feb 2024",
+    title: "Object Detection with Deep Learning",
+    issuer: "Langing Academy",
+    date: "March,17 2024",
     link: "/certificates/certificate2.pdf",
     image: img2,
   },
   {
-    title: "AI & Data Webinar",
-    issuer: "Dicoding",
-    date: "Jan 2024",
+    title: "Database System- Prediction (Master)",
+    issuer: "Ikatan Ahli Informatika Indonesia (IAII)",
+    date: "July,20 2023",
     link: "/certificates/certificate3.pdf",
     image: img3,
   },
   {
-    title: "Website Development Fundamentals",
-    issuer: "Progate",
-    date: "Dec 2023",
+    title: " Program Analyst (Software Development)",
+    issuer: "LSP UBSI, under license of BNSP (Badan Nasional Sertifikasi Profesi)",
+    date: "February,05 2025",
     link: "/certificates/certificate4.pdf",
     image: img4,
   },
   {
-    title: "UI/UX Design Basics",
-    issuer: "Coursera",
-    date: "Nov 2023",
+    title: "Intermediate Network Administrator",
+    issuer: "LSP UBSI, under license of BNSP (Badan Nasional Sertifikasi Profesi)",
+    date: "February,05 2025",
     link: "/certificates/certificate5.pdf",
     image: img5,
   },
@@ -86,7 +86,7 @@ const Certificates = () => {
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
-        Sertifikat pelatihan, webinar, dan bootcamp yang pernah saya ikuti.
+        Daftar sertifikat pelatihan yang telah saya ikuti sebagai bagian dari pengembangan diri dan peningkatan kompetensi.
       </motion.p>
 
       {/* Grid Sertifikat */}

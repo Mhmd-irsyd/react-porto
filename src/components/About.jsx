@@ -7,6 +7,7 @@ import react from "../assets/react.svg";
 import css3 from "../assets/css.svg";
 import php from "../assets/php.svg";
 import laravel from "../assets/laravel.svg";
+import logoUbsi from "../assets/logo-ubsi.png"; // pastikan kamu simpan logonya di folder assets
 
 const SectionTitle = ({ title }) => (
   <motion.h3 
@@ -99,10 +100,20 @@ const About = () => {
     I'm <span className="text-blue-500 font-semibold">Irsyad</span>, a passionate front-end developer focused on building modern and interactive web experiences.
   </p>
   <ul className="mb-6 space-y-2 text-gray-300">
-    <li>👨‍🎓 Fresh Graduate in IT</li>
+    <li>👨‍🎓 Fresh Graduate in IT "Information Technology"</li>
     <li>💻 Front-End Web Enthusiast</li>
     <li>🌍 Based in Indonesia</li>
   </ul>
+
+  {/* Universitas Info */}
+<div className="mt-6 flex items-center gap-4 bg-[#1e293b] p-4 rounded-lg shadow-lg w-fit">
+  <img src={logoUbsi} alt="Logo UBSI" className="w-12 h-12 object-contain" />
+  <div>
+    <p className="text-sm md:text-base text-gray-200">Universitas Bina Sarana Informatika</p>
+    <p className="text-sm text-gray-400">IPK: 3.77</p>
+  </div>
+</div>
+
   <div className="flex gap-4 mt-4">
     <a href="https://github.com/Mhmd-irsyd?tab=repositories" className="bg-blue-600 px-5 py-2 rounded-xl font-medium hover:bg-blue-500 transition" target="_blank" rel="noopener noreferrer">
       View My Projects
