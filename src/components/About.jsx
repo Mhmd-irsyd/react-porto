@@ -7,7 +7,8 @@ import react from "../assets/react.svg";
 import css3 from "../assets/css.svg";
 import php from "../assets/php.svg";
 import laravel from "../assets/laravel.svg";
-import logoUbsi from "../assets/logo-ubsi.png"; // pastikan kamu simpan logonya di folder assets
+import logoUbsi from "../assets/logo-ubsi.png";
+import { Link } from "react-router-dom";
 
 const SectionTitle = ({ title }) => (
   <motion.h3 
@@ -121,6 +122,18 @@ const About = () => {
     <a href="https://www.linkedin.com/in/muhammad-irsyad-032051258/" className="border border-blue-600 px-5 py-2 rounded-xl font-medium hover:bg-blue-600 transition">
       Let’s Connect
     </a>
+    
+    <motion.div
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  <Link
+    to="/khs"
+    className="inline-block bg-gradient-to-r from-cyan-500 via-emerald-500 to-teal-500 px-5 py-2 rounded-xl font-medium text-white shadow-lg hover:brightness-110 transition"
+  >
+    🎓 Lihat KHS Saya
+  </Link>
+</motion.div>
   </div>
 </motion.div>
 
