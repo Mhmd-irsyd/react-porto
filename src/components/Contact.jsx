@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaWhatsapp, FaGithub, FaLinkedin, FaLocationArrow } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaLocationArrow } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast";
 import emailjs from "@emailjs/browser";
 
@@ -24,24 +24,24 @@ const Contact = () => {
 
     emailjs
       .send(
-        "your_service_id",
-        "your_template_id",
+        "service_6xbrahj",
+        "template_nhm22kr",
         {
           from_name: form.name,
-          to_name: "Irsyad",
           from_email: form.email,
           message: form.message,
         },
-        "your_public_key"
+        "PM4k4RkrIkcWb7FKZ"
       )
       .then(() => {
         setLoading(false);
-        toast.success("Message sent! I'll get back to you soon ✨");
+        toast.success("Pesan berhasil dikirim! ✨");
         setForm({ name: "", email: "", message: "" });
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error(error);
         setLoading(false);
-        toast.error("Oops, something went wrong. Try again!");
+        toast.error("Gagal mengirim pesan. Coba lagi nanti.");
       });
   };
 
@@ -57,11 +57,10 @@ const Contact = () => {
       >
         <h2 className="text-4xl font-bold mb-2">📬 Let’s Connect</h2>
         <p className="text-gray-300 max-w-xl mx-auto">
-          Have a project in mind or just want to say hi? Fill the form below or connect with me through social media!
+          Punya project atau ingin ngobrol santai? Kirimkan pesanmu melalui form berikut ini 👇
         </p>
       </motion.div>
 
-      {/* Contact Form & Info */}
       <div className="grid md:grid-cols-2 gap-16 items-start">
         {/* Left Side Info */}
         <motion.div
@@ -89,10 +88,9 @@ const Contact = () => {
             </a>
           </div>
 
-          {/* Google Map Embed */}
           <iframe
-            title="map"
-            src="https://maps.google.com/maps?q=bekasi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            title="Lokasi Babelan"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.2131182470643!2d107.01410576948943!3d-6.177844299440312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69897a55623959%3A0x1c0e36fac910f4d4!2sJl.%20Nilam%209%2C%20Bahagia%2C%20Kec.%20Babelan%2C%20Kabupaten%20Bekasi%2C%20Jawa%20Barat%2017610!5e0!3m2!1sid!2sid!4v1720845674000!5m2!1sid!2sid"
             className="w-full h-64 mt-6 rounded-lg shadow-md border border-white/20"
             loading="lazy"
           ></iframe>

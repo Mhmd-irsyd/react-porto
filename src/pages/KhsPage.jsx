@@ -1,6 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
 import previewKhs from "../assets/khs-preview.png";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  LabelList,
+  Cell,
+} from "recharts";
 
 const khsData = [
   { matkul: "Virtual dan Augmented Reality", grade: "A", nilai: 93 },
@@ -46,6 +57,16 @@ const khsData = [
   { matkul: "Web Programming II", grade: "A", nilai: 90 },
 ];
 
+const ipSemester = [
+  { semester: 1, ip: 3.56 },
+  { semester: 2, ip: 3.50 },
+  { semester: 3, ip: 3.75 },
+  { semester: 4, ip: 4.00 },
+  { semester: 5, ip: 3.83 },
+  { semester: 6, ip: 3.87 },
+];
+
+
 const KhsPage = () => {
   return (
     <section
@@ -82,6 +103,27 @@ const KhsPage = () => {
       >
         📄 Kartu Hasil Studi (KHS)
       </motion.h2>
+
+      <div className="max-w-4xl mx-auto mb-16 z-10 relative">
+  <h3 className="text-xl font-semibold text-center mb-4 text-white">📊 Index Prestasi Tiap Semester</h3>
+  <ResponsiveContainer width="100%" height={300}>
+    <BarChart data={ipSemester} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+      <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
+      <XAxis dataKey="semester" stroke="#fff" />
+      <YAxis domain={[3.2, 4]} stroke="#fff" />
+      <Tooltip cursor={{ fill: '#ffffff10' }} />
+      <Bar dataKey="ip">
+        <LabelList dataKey="ip" position="top" fill="white" />
+        {ipSemester.map((entry, index) => (
+          <Cell
+            key={`cell-${index}`}
+            fill={entry.semester === 2 ? "#34d399" : "#a78bfa"}
+          />
+        ))}
+      </Bar>
+    </BarChart>
+  </ResponsiveContainer>
+</div>
 
       {/* Cards */}
       <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
