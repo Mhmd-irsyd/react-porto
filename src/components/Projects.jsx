@@ -1,48 +1,28 @@
-// src/components/Projects.jsx
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
-import { FaReact, FaHtml5, FaCss3Alt, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { SiTailwindcss, SiFramer, SiJavascript } from "react-icons/si";
+import {
+  FaReact, FaHtml5, FaCss3Alt, FaGithub, FaExternalLinkAlt
+} from "react-icons/fa";
+import {
+  SiTailwindcss, SiFramer, SiJavascript
+} from "react-icons/si";
 import { Tooltip } from "react-tooltip";
-import ecommerceImage from "../assets/e-commerce.jpg"; 
 
+import ecommerceImage from "../assets/e-commerce.jpg";
+import portogolioImage from "../assets/portfolio.jpg";
+import tokoonlineImage from "../assets/tokoonline.jpg";
+import klinikImage from "../assets/klinikapp.jpg";
 
-// Dummy project data
-const projectsData = [
-  {
-    title: "Modern Portfolio",
-    description: "A modern portfolio built with React and Tailwind, focusing on accessibility and animations.",
-    tech: ["React", "Tailwind", "Framer Motion"],
-    image: "/images/portfolio.png",
-    demo: "https://yourportfolio.com",
-    repo: "https://github.com/yourgithub/portfolio",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    type: "Frontend",
-  },
-  {
-    title: "Dashboard UI",
-    description: "Interactive dashboard using modern design systems.",
-    tech: ["React", "Tailwind", "JavaScript"],
-    image: "",
-    demo: "https://dashboardapp.com",
-    repo: "https://github.com/yourgithub/dashboard",
-    video: "",
-    type: "UI Clone",
-  },
-  {
-    title: "E-commerce App",
-    description: "Fullstack app with product listing, authentication, and checkout features.",
-    tech: ["React", "Tailwind", "JavaScript"],
-   image: ecommerceImage,
-  demo: "https://loginhub-56411.firebaseapp.com/",
-    repo: "https://github.com/Mhmd-irsyd?tab=repositories",
-    video: "",
-    type: "Fullstack",
-  },
-];
+// === ENUM & CONSTANT ===
+const PROJECT_TYPES = ["Frontend", "Fullstack", "Mobile"];
 
-// Tech icon map
+const typeColors = {
+  Frontend: "bg-indigo-500",
+  Fullstack: "bg-emerald-500",
+  Mobile: "bg-orange-500",
+};
+
 const techIcons = {
   React: <FaReact />,
   Tailwind: <SiTailwindcss />,
@@ -52,29 +32,77 @@ const techIcons = {
   CSS: <FaCss3Alt />,
 };
 
-// Animations
-const fadeIn = {
-  hidden: { opacity: 0, y: 30 },
-  show: (i = 1) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.15, duration: 0.6 },
-  }),
-};
+// === PROJECT DATA ===
+const projectsData = [
+  {
+    title: "Modern Portfolio",
+    description: "A modern portfolio built with React and Tailwind.",
+    tech: ["React", "Tailwind", "Framer Motion"],
+    image: portogolioImage,
+    demo: "https://yourportfolio.com",
+    repo: "https://github.com/Mhmd-irsyd/react-porto",
+    type: "Frontend",
+  },
+  {
+    title: "Toko Online Admin",
+    description: "Admin panel for food store using Laravel + React.",
+    tech: ["React", "Tailwind", "JavaScript"],
+    image: tokoonlineImage,
+    demo: "https://tokoonline-production.up.railway.app/backend/login",
+    repo: "https://github.com/Mhmd-irsyd/TokoOnline",
+    type: "Fullstack",
+  },
+  {
+    title: "E-commerce App",
+    description: "App with product listing, auth, and checkout.",
+    tech: ["React", "Tailwind", "JavaScript"],
+    image: ecommerceImage,
+    demo: "https://loginhub-56411.firebaseapp.com/",
+    repo: "https://github.com/Mhmd-irsyd/react_project",
+    type: "Fullstack",
+  },
+  {
+    title: "Building Management",
+    description: "System for managing buildings and assets.",
+    tech: ["React", "Tailwind", "JavaScript"],
+    image: ecommerceImage,
+    demo: "https://github.com/Mhmd-irsyd?tab=repositories",
+    repo: "https://github.com/Mhmd-irsyd/BMYK",
+    type: "Fullstack",
+  },
+  {
+    title: "Klinik Mobile",
+    description: "BMI calculator mobile app built with Flutter.",
+    tech: ["Flutter", "Dart"],
+    image: klinikImage,
+    demo: "https://drive.google.com/uc?export=download&id=xxx",
+    repo: "https://github.com/Mhmd-irsyd/bmi-flutter",
+    apk: "https://drive.google.com/uc?export=download&id=xxx",
+    type: "Mobile",
+  },
+];
 
-// Only show selected categories
-const categories = ["All", "Frontend", "Fullstack"];
-
+// === MAIN COMPONENT ===
 const Projects = () => {
   const [active, setActive] = useState("All");
   const [selectedVideo, setSelectedVideo] = useState(null);
 
+  const sortedProjects = [...projectsData].sort((a, b) =>
+    a.type.localeCompare(b.type)
+  );
+
   const filteredProjects =
     active === "All"
-      ? projectsData.filter(
-          (p) => p.type === "Frontend" || p.type === "Fullstack"
-        )
-      : projectsData.filter((p) => p.type === active);
+      ? sortedProjects
+      : sortedProjects.filter((p) => p.type === active);
+
+  const categoryCounts = {
+    All: projectsData.length,
+    ...PROJECT_TYPES.reduce((acc, type) => {
+      acc[type] = projectsData.filter((p) => p.type === type).length;
+      return acc;
+    }, {}),
+  };
 
   return (
     <section
@@ -92,13 +120,13 @@ const Projects = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-2">💼 My Projects</h2>
           <p className="text-gray-300 max-w-xl mx-auto">
-            Here are some of the projects I've worked on lately. All built with love and precision.
+            Projects I've built with love — covering frontend, fullstack, and mobile.
           </p>
         </motion.div>
 
         {/* Filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-10">
-          {categories.map((cat) => (
+          {["All", ...PROJECT_TYPES].map((cat) => (
             <button
               key={cat}
               onClick={() => setActive(cat)}
@@ -108,7 +136,7 @@ const Projects = () => {
                   : "bg-transparent text-white border-white"
               } transition duration-300 text-sm`}
             >
-              {cat}
+              {cat} ({categoryCounts[cat]})
             </button>
           ))}
         </div>
@@ -122,9 +150,9 @@ const Projects = () => {
             <motion.div
               key={project.title}
               custom={index}
-              variants={fadeIn}
-              initial="hidden"
-              whileInView="show"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
             >
               <Tilt
@@ -139,19 +167,22 @@ const Projects = () => {
                     alt={project.title}
                     className="w-full h-48 object-cover object-center"
                   />
-                  {project.video && (
-                    <button
-                      onClick={() => setSelectedVideo(project.video)}
-                      className="absolute top-2 right-2 text-xs bg-white text-black px-2 py-1 rounded hover:bg-gray-100"
-                    >
-                      🎬 Preview
-                    </button>
-                  )}
+                  <span
+                    className={`absolute top-2 left-2 text-xs px-2 py-1 rounded-full text-white ${typeColors[project.type]}`}
+                  >
+                    {project.type === "Mobile" && "📱 "}
+                    {project.type}
+                  </span>
                 </div>
+
                 <div className="p-5">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-sm text-gray-300 mb-4">{project.description}</p>
-                  <div className="flex items-center gap-2 text-lg mb-3">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-gray-300 mb-4">
+                    {project.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-lg mb-3 flex-wrap">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
@@ -163,21 +194,35 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-3">
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      className="flex items-center gap-1 px-3 py-1 bg-white text-black rounded-full text-sm hover:bg-gray-200 transition"
-                    >
-                      <FaExternalLinkAlt /> Demo
-                    </a>
-                    <a
-                      href={project.repo}
-                      target="_blank"
-                      className="flex items-center gap-1 px-3 py-1 bg-white text-black rounded-full text-sm hover:bg-gray-200 transition"
-                    >
-                      <FaGithub /> GitHub
-                    </a>
+
+                  <div className="flex gap-3 flex-wrap">
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        className="flex items-center gap-1 px-3 py-1 bg-white text-black rounded-full text-sm hover:bg-gray-200 transition"
+                      >
+                        <FaExternalLinkAlt /> Demo
+                      </a>
+                    )}
+                    {project.repo && (
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        className="flex items-center gap-1 px-3 py-1 bg-white text-black rounded-full text-sm hover:bg-gray-200 transition"
+                      >
+                        <FaGithub /> GitHub
+                      </a>
+                    )}
+                    {project.apk && (
+                      <a
+                        href={project.apk}
+                        target="_blank"
+                        className="flex items-center gap-1 px-3 py-1 bg-green-500 text-white rounded-full text-sm hover:bg-green-400 transition"
+                      >
+                        📱 Install App
+                      </a>
+                    )}
                   </div>
                 </div>
               </Tilt>
@@ -186,7 +231,7 @@ const Projects = () => {
         </motion.div>
       </div>
 
-      {/* Modal */}
+      {/* Video Modal */}
       {selectedVideo && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl max-w-2xl w-full overflow-hidden">

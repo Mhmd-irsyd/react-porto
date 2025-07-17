@@ -178,6 +178,48 @@ const About = () => {
   </div>
 </motion.div>
 
+<motion.div 
+  className="mt-20"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true, amount: 0.3 }}
+  transition={{ duration: 0.5 }}
+>
+  <SectionTitle title="Technologies I've Explored" />
+  
+  <p className="text-gray-300 mb-8 text-center max-w-2xl mx-auto text-base md:text-lg">
+    Aside from my main tech stack, I’ve explored several other technologies to broaden my skills — from mobile app development to server-side frameworks.
+  </p>
+
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 px-6">
+    {[
+      { title: "Dart", icon: "/icons/dart.svg", barWidth: "w-1/4" },
+      { title: "Flutter", icon: "/icons/flutter.svg", barWidth: "w-1/4" },
+      { title: "C#", icon: "/icons/csharp.svg", barWidth: "w-1/4" },
+      { title: "Next.js", icon: "/icons/nextjs.svg", barWidth: "w-1/4" },
+      { title: "CodeIgniter", icon: "/icons/codeigniter.svg", barWidth: "w-1/4" },
+    ].map((item, index) => (
+      <motion.div 
+        key={index}
+        className="relative bg-gradient-to-br from-[#1e293b] to-[#0f172a] p-4 rounded-xl shadow-lg text-center hover:-translate-y-1 transition-transform duration-300 group"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.5 }}
+      >
+        <img src={item.icon} alt={item.title} className="w-10 h-10 mx-auto mb-2 object-contain opacity-80 group-hover:opacity-100" />
+        <h4 className="text-md font-semibold text-white mb-1">{item.title}</h4>
+        <span className="text-xs text-yellow-400 bg-yellow-900/20 px-2 py-0.5 rounded-full">Explored</span>
+        
+        <div className="w-full bg-gray-700 h-1 mt-3 rounded">
+          <div className={`bg-yellow-400 h-1 rounded ${item.barWidth}`} />
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
+
+
 
       {/* Experience Timeline */}
       <motion.div 
