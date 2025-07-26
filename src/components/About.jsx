@@ -7,6 +7,11 @@ import react from "../assets/react.svg";
 import css3 from "../assets/css.svg";
 import php from "../assets/php.svg";
 import laravel from "../assets/laravel.svg";
+import dart from "../assets/dart.svg";
+import flutter from "../assets/flutter.svg";
+import csharp from "../assets/c_sharp.svg";
+import nextjs from "../assets/next-js.svg";
+import codeigniter from "../assets/codeigniter.svg";
 import logoUbsi from "../assets/logo-ubsi.png";
 import { Link } from "react-router-dom";
 
@@ -193,11 +198,11 @@ const About = () => {
 
   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 px-6">
     {[
-      { title: "Dart", icon: "/icons/dart.svg", barWidth: "w-1/4" },
-      { title: "Flutter", icon: "/icons/flutter.svg", barWidth: "w-1/4" },
-      { title: "C#", icon: "/icons/csharp.svg", barWidth: "w-1/4" },
-      { title: "Next.js", icon: "/icons/nextjs.svg", barWidth: "w-1/4" },
-      { title: "CodeIgniter", icon: "/icons/codeigniter.svg", barWidth: "w-1/4" },
+     { title: "Dart", icon: dart, barWidth: "w-1/4" },
+  { title: "Flutter", icon: flutter, barWidth: "w-1/4" },
+  { title: "C#", icon: csharp, barWidth: "w-1/4" },
+  { title: "Next.js", icon: nextjs, barWidth: "w-1/4" },
+  { title: "CodeIgniter", icon: codeigniter, barWidth: "w-1/4" },
     ].map((item, index) => (
       <motion.div 
         key={index}
