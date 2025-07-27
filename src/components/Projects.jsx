@@ -13,6 +13,7 @@ import ecommerceImage from "../assets/e-commerce.jpg";
 import portogolioImage from "../assets/portfolio.jpg";
 import tokoonlineImage from "../assets/tokoonline.jpg";
 import klinikImage from "../assets/klinikapp.jpg";
+import AugmentedRealityImage from "../assets/augmentedreality.jpg";
 
 // === ENUM & CONSTANT ===
 const PROJECT_TYPES = ["Frontend", "Fullstack", "Mobile"];
@@ -72,21 +73,20 @@ const projectsData = [
   },
   {
     title: "Klinik Mobile",
-    description: "BMI calculator mobile app built with Flutter.",
+    description: "A mobile health app designed to help users access simple clinical features",
     tech: ["Flutter", "Dart"],
     image: klinikImage,
     repo: "https://github.com/Mhmd-irsyd/klmpk_mble_prgramng",
-    apk: "https://drive.google.com/uc?export=download&id=xxx",
+    apk: "https://drive.google.com/file/d/1fZrw2X-oEfNDD34zbQ7qqLsn6A1C6DM7/view?usp=sharing",
     type: "Mobile",
   },
    {
     title: "Augmented Reality App",
-    description: "BMI calculator mobile app built with Flutter.",
+    description: "A mobile augmented reality app that brings animal characters to life with 3D animations for a fun experience.",
     tech: ["C#", "Vuforia", "Unity"],
     image: AugmentedRealityImage,
-    demo: "https://drive.google.com/uc?export=download&id=xxx",
-    repo: "https://github.com/Mhmd-irsyd/bmi-flutter",
-    apk: "https://drive.google.com/uc?export=download&id=xxx",
+    repo: "https://github.com/Mhmd-irsyd/ar_animated",
+    apk: "https://drive.google.com/file/d/1fXbIf8udgtB6Hd1oVKt49LJQgHgPRxF3/view?usp=sharing",
     type: "Mobile",
   },
 ];
