@@ -47,7 +47,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Kiri - Logo */}
-        <h1 className="text-xl font-bold text-white">Irsyad.dev</h1>
+        <h1 className="text-xl font-bold text-white">Syad.dev</h1>
 
         {/* Tengah - Nav Links Desktop */}
         <ul className="hidden md:flex gap-8">

@@ -66,7 +66,7 @@ const Hero = () => {
   <p className="text-base sm:text-lg mb-2 text-white">👋 Hi, I'm</p>
   
   <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight">
-    <span className="text-emerald-400 drop-shadow">Irsyad</span>
+    <span className="text-emerald-400 drop-shadow">Muhammad Irsyad</span>
   </h1>
   
   <h2 className="text-lg sm:text-xl lg:text-2xl mt-2 text-emerald-200">

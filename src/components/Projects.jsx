@@ -14,6 +14,7 @@ import portogolioImage from "../assets/portfolio.jpg";
 import tokoonlineImage from "../assets/tokoonline.jpg";
 import klinikImage from "../assets/klinikapp.jpg";
 import AugmentedRealityImage from "../assets/augmentedreality.jpg";
+import buildingManagementImage from "../assets/buildingmanagement.jpg";
 
 // === ENUM & CONSTANT ===
 const PROJECT_TYPES = ["Frontend", "Fullstack", "Mobile"];
@@ -55,7 +56,7 @@ const projectsData = [
   },
   {
     title: "E-commerce App",
-    description: "App with product listing, auth, and checkout.",
+    description: "e-commerce app for browsing and purchasing accessories, featuring user authentication, shopping cart, and secure checkout functionality.",
     tech: ["React", "Tailwind", "JavaScript"],
     image: ecommerceImage,
     demo: "https://loginhub-56411.firebaseapp.com/",
@@ -64,9 +65,9 @@ const projectsData = [
   },
   {
     title: "Building Management",
-    description: "System for managing buildings and assets.",
+    description: "A mobile app for managing building assets, where staff can upload maintenance proof easily.",
     tech: ["React", "Tailwind", "JavaScript"],
-    image: ecommerceImage,
+    image: buildingManagementImage,
     demo: "https://github.com/Mhmd-irsyd?tab=repositories",
     repo: "https://github.com/Mhmd-irsyd/BMYK",
     type: "Fullstack",
