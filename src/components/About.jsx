@@ -116,7 +116,7 @@ const About = () => {
   <img src={logoUbsi} alt="Logo UBSI" className="w-12 h-12 object-contain" />
   <div>
     <p className="text-sm md:text-base text-gray-200">Universitas Bina Sarana Informatika</p>
-    <p className="text-sm text-gray-400">IPK: 3.77</p>
+    <p className="text-sm text-gray-400">IPK: 3.76</p>
   </div>
 </div>
 

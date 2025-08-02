@@ -5,6 +5,7 @@ import img2 from "../assets/certificate2.png";
 import img3 from "../assets/certificate3.png";
 import img4 from "../assets/certificate4.png";
 import img5 from "../assets/certificate5.png";
+import img6 from "../assets/certificate6.png";
 
 const certificates = [
   {
@@ -41,6 +42,13 @@ const certificates = [
     date: "February,05 2025",
     link: "/certificates/certificate5.pdf",
     image: img5,
+  },
+  {
+    title: "Front-End Mobile Web App Development Building Management",
+    issuer: "PT. AGRINAS PANGAN NUSANTARA",
+    date: "July,08 2025",
+    link: "/certificates/certificate6.pdf",
+    image: img6,
   },
 ];
 

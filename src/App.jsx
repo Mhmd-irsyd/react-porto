@@ -10,7 +10,7 @@ function App() {
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Home />} />
         <Route path="certificates" element={<Certificates />} />
-        <Route path="khs" element={<KHSPage />} /> {/* ✅ perbaikan di sini */}
+        <Route path="khs" element={<KHSPage />} />
       </Route>
     </Routes>
   );

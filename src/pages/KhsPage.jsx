@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import previewKhs from "../assets/khs-preview.png";
 import {
@@ -45,7 +44,7 @@ const khsData = [
   { matkul: "Grafika Komputer", grade: "A", nilai: 80 },
   { matkul: "Jaringan Komputer", grade: "A", nilai: 92 },
   { matkul: "Praktikum Jaringan Komputer", grade: "A", nilai: 100 },
-  { matkul: "Sistem Basis Data", grade: "B", nilai: 74 },
+  { matkul: "Sistem Basis Data", grade: "B", nilai: 70 },
   { matkul: "Bahasa Inggris I", grade: "A", nilai: 83 },
   { matkul: "Dasar Pemrograman", grade: "B", nilai: 68 },
   { matkul: "Entrepreneurship", grade: "A", nilai: 87 },
@@ -54,7 +53,11 @@ const khsData = [
   { matkul: "Pengantar Teknologi Informasi dan Komunikasi", grade: "A", nilai: 81 },
   { matkul: "Arsitektur Komputer", grade: "B", nilai: 69 },
   { matkul: "Bahasa Inggris II", grade: "A", nilai: 83 },
-  { matkul: "Web Programming II", grade: "A", nilai: 90 },
+  { matkul: "Web Programming II", grade: "A", nilai: 91 },
+  { matkul: "Bahasa Indonesia", grade: "A", nilai: 90 },
+  { matkul: "Etika Profesi Teknologi Informasi Dan Komunikasi", grade: "A", nilai: 85 },
+  { matkul: "Pendidikan Kewarganegaraan", grade: "A", nilai: 85 },
+  { matkul: "Praktik Kerja Lapangan", grade: "B", nilai: 79 },
 ];
 
 const ipSemester = [
@@ -64,6 +67,7 @@ const ipSemester = [
   { semester: 4, ip: 4.00 },
   { semester: 5, ip: 3.83 },
   { semester: 6, ip: 3.87 },
+  { semester: 7, ip: 3.64 },
 ];
 
 
