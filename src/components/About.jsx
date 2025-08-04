@@ -47,9 +47,6 @@ const SkillCard = ({ icon, title, imgSize, barWidth }) => (
   </motion.div>
 );
 
-  
-  
-
 const TimelineItem = ({ title, time, description, isLeft }) => (
   <motion.div
     className={`w-full md:w-1/2 px-4 py-6 relative ${isLeft ? "self-start md:pr-10 text-right" : "self-end md:pl-10 text-left"}`}
@@ -67,8 +64,6 @@ const TimelineItem = ({ title, time, description, isLeft }) => (
     <span className="absolute top-6 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-[#0f172a] z-10" />
   </motion.div>
 );
-
-
 
 const ProjectCard = ({ title, description, link }) => (
   <motion.div 
@@ -224,8 +219,6 @@ const About = () => {
   </div>
 </motion.div>
 
-
-
       {/* Experience Timeline */}
       <motion.div 
   className="mt-20 relative"
@@ -248,8 +241,8 @@ const About = () => {
           description: "Secara mandiri mengembangkan berbagai proyek web, termasuk landing page, website dinamis, dan situs e-commerce. Menggunakan teknologi seperti React, Tailwind CSS, dan Firebase untuk membangun aplikasi web responsif dan fungsional, serta terus meningkatkan keterampilan dalam pengembangan front-end dan back-end melalui proyek nyata dan tantangan pengembangan.",
         },
         {
-          title: "Front-End Web Developer with Fullstack Capabilities Intern PT Yodya Karya",
-          time: "April 2025 – July 2025",
+          title: "Front-End Web Developer with Fullstack Capabilities Intern PT Agrinas Pangan Nusantara",
+          time: "April 2025 - July 2025",
           description: "Bertanggung jawab sebagai Front-End Developer dalam pengembangan website Building Management selama 3 bulan menggunakan React.js, Laravel, dan Inertia.js. Saya membangun antarmuka pengguna yang responsif dan mudah digunakan untuk memudahkan petugas mengunggah bukti aktivitas gedung. Selain itu, saya juga terlibat secara ringan dalam pengelolaan sisi backend, seperti integrasi data dan autentikasi dasar. Proyek ini memperkuat keterampilan saya dalam membangun aplikasi web modern berbasis komponen dan terintegrasi penuh antara frontend dan backend.",
         },
       ].map((item, index) => (
