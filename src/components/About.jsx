@@ -276,7 +276,7 @@ const About = () => {
           }, {
             title: "Building Management Website",
             description: "Built the front-end of a Building Management website using React.js, Laravel, and Inertia.js. Focused on creating a responsive and integrated UI, with light backend support for authentication and data flow.",
-            link: "https://github.com/irsyad/blog"
+            link: "https://bm.agrinaspangan.id/login"
           }].map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}

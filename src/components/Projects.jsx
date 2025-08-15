@@ -68,7 +68,7 @@ const projectsData = [
     description: "A mobile app for managing building assets, where staff can upload maintenance proof easily.",
     tech: ["React", "Tailwind", "JavaScript"],
     image: buildingManagementImage,
-    demo: "https://github.com/Mhmd-irsyd?tab=repositories",
+    demo: "https://bm.agrinaspangan.id/login",
     repo: "https://github.com/Mhmd-irsyd/BMYK",
     type: "Fullstack",
   },
