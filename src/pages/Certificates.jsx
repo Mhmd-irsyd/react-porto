@@ -6,6 +6,7 @@ import img3 from "../assets/certificate3.png";
 import img4 from "../assets/certificate4.png";
 import img5 from "../assets/certificate5.png";
 import img6 from "../assets/certificate6.png";
+import img7 from "../assets/certificate7.png";
 
 const certificates = [
   {
@@ -50,6 +51,13 @@ const certificates = [
     link: "/certificates/certificate6.pdf",
     image: img6,
   },
+  {
+    title: "Introduction to cybersecurity",
+    issuer: "cisco networking academy",
+    date: "June,29 2024",
+    link: "/certificates/certificate7.pdf",
+    image: img7,
+  },
 ];
 
 const Certificates = () => {
@@ -74,7 +82,6 @@ const Certificates = () => {
     animation: `bubbleMove ${bubble.duration} infinite linear`,
   }}
 />
-
         ))}
       </div>
 
