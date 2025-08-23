@@ -95,12 +95,14 @@ const Hero = () => {
   Hire Me
 </a>
 <a
-  href="/cv-irsyad.pdf"
-  download="Irsyad-CV.pdf"
+  href="/International.CV.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
   className="border border-emerald-400 text-emerald-400 px-6 py-3 rounded-xl hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition duration-300"
 >
-  Download CV
+  Lihat CV
 </a>
+
 
   </div>
 
