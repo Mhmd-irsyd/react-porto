@@ -138,7 +138,7 @@ const Hero = () => {
                     CV (Indonesia)
                   </a>
                   <a
-                    href="/CV-English.pdf"
+                    href="/Resume-English.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block px-4 py-2 hover:bg-gray-100 text-gray-700"
