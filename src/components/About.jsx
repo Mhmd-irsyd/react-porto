@@ -12,6 +12,8 @@ import flutter from "../assets/flutter.svg";
 import csharp from "../assets/c_sharp.svg";
 import nextjs from "../assets/next-js.svg";
 import codeigniter from "../assets/codeigniter.svg";
+import python from "../assets/python.svg";
+import vue from "../assets/vue.svg";
 import logoUbsi from "../assets/logo-ubsi.png";
 import { Link } from "react-router-dom";
 
@@ -198,6 +200,8 @@ const About = () => {
   { title: "C#", icon: csharp, barWidth: "w-1/4" },
   { title: "Next.js", icon: nextjs, barWidth: "w-1/4" },
   { title: "CodeIgniter", icon: codeigniter, barWidth: "w-1/4" },
+  { title: "Python", icon: python, barWidth: "w-1/4" },
+  { title: "Vue", icon: vue, barWidth: "w-1/4" },
     ].map((item, index) => (
       <motion.div 
         key={index}
