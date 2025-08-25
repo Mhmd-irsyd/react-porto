@@ -247,7 +247,7 @@ const About = () => {
         {
           title: "Front-End Web Developer with Fullstack Capabilities Intern PT Agrinas Pangan Nusantara",
           time: "April 2025 - July 2025",
-          description: "Bertanggung jawab sebagai Front-End Developer dalam pengembangan website Building Management selama 3 bulan menggunakan React.js, Laravel, dan Inertia.js. Saya membangun antarmuka pengguna yang responsif dan mudah digunakan untuk memudahkan petugas mengunggah bukti aktivitas gedung. Selain itu, saya juga terlibat secara ringan dalam pengelolaan sisi backend, seperti integrasi data dan autentikasi dasar. Proyek ini memperkuat keterampilan saya dalam membangun aplikasi web modern berbasis komponen dan terintegrasi penuh antara frontend dan backend.",
+          description: "Bertanggung jawab sebagai Front-End Developer dalam pengembangan website Building Management selama 3 bulan menggunakan React.js, dan Laravel Saya membangun antarmuka pengguna yang responsif dan mudah digunakan untuk memudahkan petugas mengunggah bukti aktivitas gedung. Selain itu, saya juga terlibat secara ringan dalam pengelolaan sisi backend, seperti integrasi data. Proyek ini memperkuat keterampilan saya dalam membangun aplikasi web modern berbasis komponen dan terintegrasi penuh antara frontend dan backend.",
         },
       ].map((item, index) => (
         <TimelineItem
@@ -279,7 +279,7 @@ const About = () => {
             link: "https://portofolio-one-eta.vercel.app/"
           }, {
             title: "Building Management Website",
-            description: "Built the front-end of a Building Management website using React.js, Laravel, and Inertia.js. Focused on creating a responsive and integrated UI, with light backend support for authentication and data flow.",
+            description: "Built the front-end of a Building Management website using React.js, and Laravel,  Focused on creating a responsive and integrated UI, with light backend support for data flow.",
             link: "https://bm.agrinaspangan.id/login"
           }].map((project, index) => (
             <ProjectCard key={index} {...project} />
