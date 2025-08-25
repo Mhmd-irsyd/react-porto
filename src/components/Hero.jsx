@@ -115,7 +115,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className="bg-emerald-500 text-white px-6 py-3 rounded-xl hover:bg-emerald-600 transition duration-300"
             >
-              Hire Me``
+              Hire Me
             </a>
 
             {/* CV Dropdown */}
