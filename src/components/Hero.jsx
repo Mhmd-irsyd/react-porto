@@ -4,6 +4,7 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 import StikerPhoto from "../assets/irsyad.png";
 
 const Hero = () => {
+   const [open, setOpen] = useState(false);
   return (
     <section
   id="home"
@@ -94,14 +95,37 @@ const Hero = () => {
 >
   Hire Me
 </a>
-<a
-  href="/International.CV.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="border border-emerald-400 text-emerald-400 px-6 py-3 rounded-xl hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition duration-300"
->
-  Lihat CV
-</a>
+<div className="relative inline-block text-left">
+              <button
+                onClick={() => setOpenCV(!openCV)}
+                className="border border-emerald-400 text-emerald-400 px-6 py-3 rounded-xl hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition duration-300"
+              >
+                Lihat CV
+              </button>
+
+              {openCV && (
+                <div className="absolute mt-2 w-40 bg-white border border-gray-200 rounded-xl shadow-lg">
+                  <a
+                    href="/CV-Indonesia.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 hover:bg-gray-100 text-gray-700"
+                  >
+                    CV (Indonesia)
+                  </a>
+                  <a
+                    href="/CV-English.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 hover:bg-gray-100 text-gray-700"
+                  >
+                    CV (English)
+                  </a>
+                </div>
+              )}
+            </div>
+          
+
 
 
   </div>
