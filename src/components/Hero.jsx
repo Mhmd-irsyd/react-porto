@@ -5,7 +5,21 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 import StikerPhoto from "../assets/irsyad.png";
 
 const Hero = () => {
-  const [openCV, setOpenCV] = useState(false);
+   const [openCV, setOpenCV] = useState(false);
+  const cvRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (cvRef.current && !cvRef.current.contains(event.target)) {
+        setOpenCV(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <section
@@ -129,7 +143,7 @@ const Hero = () => {
                     rel="noopener noreferrer"
                     className="block px-4 py-2 hover:bg-gray-100 text-gray-700"
                   >
-                    CV (English)
+                    RESUME (English)
                   </a>
                 </div>
               )}
