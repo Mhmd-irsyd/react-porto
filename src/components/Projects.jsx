@@ -5,7 +5,7 @@ import {
   FaReact, FaHtml5, FaCss3Alt, FaGithub, FaExternalLinkAlt
 } from "react-icons/fa";
 import {
-  SiTailwindcss, SiFramer, SiJavascript
+  SiTailwindcss, SiFramer, SiJavascript,SiLaravel, SiDotnet, SiUnity, SiMariadb, SiDart, SiFlutter, SiFirebase,
 } from "react-icons/si";
 import { Tooltip } from "react-tooltip";
 
@@ -30,6 +30,13 @@ const techIcons = {
   Tailwind: <SiTailwindcss />,
   "Framer Motion": <SiFramer />,
   JavaScript: <SiJavascript />,
+  Laravel: <SiLaravel />,
+  Csharp: <SiDotnet />,
+  Unity: <SiUnity />,
+  MariaDB: <SiMariadb />,
+   Dart: <SiDart />,
+  Flutter: <SiFlutter />,
+  Firebase: <SiFirebase />,
   HTML: <FaHtml5 />,
   CSS: <FaCss3Alt />,
 };
@@ -48,7 +55,7 @@ const projectsData = [
   {
     title: "Toko Online Admin",
     description: "Admin panel for food store using Laravel + React.",
-    tech: ["React", "Tailwind", "JavaScript"],
+    tech: ["Laravel", "Tailwind", "MariaDB"],
     image: tokoonlineImage,
     demo: "https://tokoonline-production.up.railway.app/backend/login",
     repo: "https://github.com/Mhmd-irsyd/TokoOnline",
@@ -57,7 +64,7 @@ const projectsData = [
   {
     title: "E-commerce App",
     description: "e-commerce app for browsing and purchasing accessories, featuring user authentication, shopping cart, and secure checkout functionality.",
-    tech: ["React", "Tailwind", "JavaScript"],
+    tech: ["React", "Tailwind", "Firebase"],
     image: ecommerceImage,
     demo: "https://loginhub-56411.firebaseapp.com/",
     repo: "https://github.com/Mhmd-irsyd/react_project",
@@ -66,7 +73,7 @@ const projectsData = [
   {
     title: "Building Management",
     description: "A mobile app for managing building assets, where staff can upload maintenance proof easily.",
-    tech: ["React", "Tailwind", "JavaScript"],
+    tech: ["React", "Tailwind", "JavaScript", "laravel", "MariaDB"],
     image: buildingManagementImage,
     demo: "https://bm.agrinaspangan.id/login",
     repo: "https://github.com/Mhmd-irsyd/BMYK",
@@ -84,7 +91,7 @@ const projectsData = [
    {
     title: "Augmented Reality App",
     description: "A mobile augmented reality app that brings animal characters to life with 3D animations for a fun experience.",
-    tech: ["C#", "Vuforia", "Unity"],
+    tech: ["Csharp", "Vuforia", "Unity"],
     image: AugmentedRealityImage,
     repo: "https://github.com/Mhmd-irsyd/ar_animated",
     apk: "https://drive.google.com/file/d/1fXbIf8udgtB6Hd1oVKt49LJQgHgPRxF3/view?usp=sharing",
