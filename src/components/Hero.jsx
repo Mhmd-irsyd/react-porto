@@ -107,7 +107,7 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="mt-6 flex flex-col sm:flex-row justify-center lg:justify-start gap-4 relative">
+         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 relative">
             {/* Hire Me */}
             <a
               href="https://mail.google.com/mail/?view=cm&to=irsyadmuhammad4321@gmail.com"
