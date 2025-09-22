@@ -119,7 +119,8 @@ const Hero = () => {
             </a>
 
             {/* CV Dropdown */}
-            <div className="relative inline-block text-left" ref={cvRef}>``
+           <div className="relative block text-left" ref={cvRef}>
+
               <button
                 onClick={() => setOpenCV(!openCV)}
                 className="border border-emerald-400 text-emerald-400 px-6 py-3 rounded-xl hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition duration-300"
