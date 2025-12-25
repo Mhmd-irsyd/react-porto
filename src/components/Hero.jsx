@@ -131,7 +131,7 @@ const Hero = () => {
               {openCV && (
                 <div className="absolute mt-2 w-40 bg-white border border-gray-200 rounded-xl shadow-lg">
                   <a
-                    href="/CV-Indonesia.pdf"
+                    href="/CV-Indonesia2.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block px-4 py-2 hover:bg-gray-100 text-gray-700"
@@ -139,7 +139,7 @@ const Hero = () => {
                     CV (Indonesia)
                   </a>
                   <a
-                    href="/Resume-English.pdf"
+                    href="/Resume-English2.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block px-4 py-2 hover:bg-gray-100 text-gray-700"
