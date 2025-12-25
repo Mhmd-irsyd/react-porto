@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
-import { FaWhatsapp } from "react-icons/fa"; // pastikan kamu install react-icons
+import { FaWhatsapp } from "react-icons/fa";
 
 const AppLayout = () => {
   return (

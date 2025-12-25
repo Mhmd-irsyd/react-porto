@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom"; // ✅ Tambahkan ini
+import { useLocation } from "react-router-dom";
 import { scrollToSection } from "../utils/scrollToSection";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
