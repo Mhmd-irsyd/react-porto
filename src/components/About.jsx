@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { FaGraduationCap, FaLaptopCode, FaGlobeAsia } from 'react-icons/fa';
 import aboutIllustration from "../assets/ilustration.svg";
 import html5 from "../assets/html5.svg";
 import tailwind from "../assets/tailwind.svg";
@@ -103,9 +104,9 @@ const About = () => {
     I'm <span className="text-blue-500 font-semibold">Irsyad</span>, a passionate front-end developer focused on building modern and interactive web experiences.
   </p>
   <ul className="mb-6 space-y-2 text-gray-300">
-    <li>👨‍🎓 Fresh Graduate in IT "Information Technology"</li>
-    <li>💻 Front-End Web Enthusiast</li>
-    <li>🌍 Based in Indonesia</li>
+    <li className="flex items-center gap-2"><FaGraduationCap className="text-blue-500" /> Fresh Graduate in IT "Information Technology"</li>
+    <li className="flex items-center gap-2"><FaLaptopCode className="text-blue-500" /> Front-End Web Enthusiast</li>
+    <li className="flex items-center gap-2"><FaGlobeAsia className="text-blue-500" /> Based in Indonesia</li>
   </ul>
 
   {/* Universitas Info */}
@@ -158,15 +159,15 @@ const About = () => {
 
       {/* Skills Section */}
 <motion.div 
-  className="mt-20 opacity-100 transform transition-all duration-400 ease-out"
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true, amount: 0.3 }}
-  transition={{ duration: 0.5 }}
+className="mt-20 opacity-100 transform transition-all duration-400 ease-out"
+ initial={{ opacity: 0 }}
+ whileInView={{ opacity: 1 }}
+ viewport={{ once: true, amount: 0.3 }}
+ transition={{ duration: 0.5 }}
 >
-  <SectionTitle title="Skills & Expertise" />
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
-    {[
+ <SectionTitle title="Skills & Expertise" />
+ <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
+ {[
   { icon: html5, title: "HTML5", imgSize: "w-[60px] h-[60px]", barWidth: "w-4/5" },
   { icon: tailwind, title: "Tailwind CSS", imgSize: "w-[60px] h-[60px]", barWidth: "w-4/5" },
   { icon: javascript, title: "JavaScript", imgSize: "w-[60px] h-[60px]", barWidth: "w-3/4" },
@@ -177,7 +178,7 @@ const About = () => {
 ].map((skill, index) => (
   <SkillCard key={index} {...skill} />
 ))}
-  </div>
+ </div>
 </motion.div>
 
 <motion.div 
