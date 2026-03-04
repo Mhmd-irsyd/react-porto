@@ -12,6 +12,7 @@ import {
   Cell,
 } from "recharts";
 import { useState } from "react";
+import { FaBook, FaChevronUp, FaChevronDown, FaFileAlt, FaChartBar } from "react-icons/fa";
 
 const khsData = [
    // Semester 1
@@ -99,8 +100,8 @@ const SemesterDropdown = ({ semester, courses, isOpen, toggle }) => (
       className={`w-full flex justify-between items-center px-4 py-3 rounded-lg font-semibold transition 
         border border-white/30 bg-white/20 hover:bg-white/30 text-white shadow-md backdrop-blur-sm focus:outline-none`}
     >
-      <span>📘 Semester {semester}</span>
-      <span>{isOpen ? "🔼" : "🔽"}</span>
+      <span className="flex items-center gap-2"><FaBook /> Semester {semester}</span>
+      <span>{isOpen ? <FaChevronUp /> : <FaChevronDown />}</span>
     </button>
 
     <motion.div
@@ -161,16 +162,16 @@ const KhsPage = () => {
       </div>
 
       <motion.h2
-        className="text-3xl md:text-4xl font-bold text-center text-white mb-12 relative z-10"
+        className="text-3xl md:text-4xl font-bold text-center text-white mb-12 relative z-10 flex items-center justify-center gap-2"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        📄 Kartu Hasil Studi (KHS)
+        <FaFileAlt /> Kartu Hasil Studi (KHS)
       </motion.h2>
 
       <div className="max-w-4xl mx-auto mb-16 z-10 relative">
-        <h3 className="text-xl font-semibold text-center mb-4 text-white">📊 Index Prestasi Tiap Semester</h3>
+        <h3 className="text-xl font-semibold text-center mb-4 text-white flex items-center justify-center gap-2"><FaChartBar /> Index Prestasi Tiap Semester</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={ipSemester} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
@@ -218,9 +219,9 @@ const KhsPage = () => {
             href="khs-asli.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-auto inline-block px-4 py-2 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 transition"
+            className="mt-auto px-4 py-2 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 transition flex items-center justify-center gap-2"
           >
-            📄 Lihat PDF
+            <FaFileAlt /> Lihat PDF
           </a>
         </motion.div>
       </div>

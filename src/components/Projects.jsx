@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 import {
-  FaReact, FaHtml5, FaCss3Alt, FaGithub, FaExternalLinkAlt
+  FaReact, FaHtml5, FaCss3Alt, FaGithub, FaExternalLinkAlt, FaBriefcase, FaMobileAlt, FaVideo, FaTimes
 } from "react-icons/fa";
 import {
   SiTailwindcss, SiFramer, SiJavascript,SiLaravel, SiDotnet, SiUnity, SiMariadb, SiDart, SiFlutter, SiFirebase,
@@ -135,7 +135,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-2">💼 My Projects</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-2 flex items-center justify-center gap-2"><FaBriefcase /> My Projects</h2>
           <p className="text-gray-300 max-w-xl mx-auto">
             Projects I've built with love — covering frontend, fullstack, and mobile.
           </p>
@@ -185,9 +185,9 @@ const Projects = () => {
                     className="w-full h-48 object-cover object-center"
                   />
                   <span
-                    className={`absolute top-2 left-2 text-xs px-2 py-1 rounded-full text-white ${typeColors[project.type]}`}
+                    className={`absolute top-2 left-2 text-xs px-2 py-1 rounded-full text-white ${typeColors[project.type]} flex items-center gap-1`}
                   >
-                    {project.type === "Mobile" && "📱 "}
+                    {project.type === "Mobile" && <FaMobileAlt />}
                     {project.type}
                   </span>
                 </div>
@@ -237,7 +237,7 @@ const Projects = () => {
                         target="_blank"
                         className="flex items-center gap-1 px-3 py-1 bg-green-500 text-white rounded-full text-sm hover:bg-green-400 transition"
                       >
-                        📱 Install App
+                        <FaMobileAlt /> Install App
                       </a>
                     )}
                   </div>
@@ -253,8 +253,8 @@ const Projects = () => {
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl max-w-2xl w-full overflow-hidden">
             <div className="flex justify-between items-center bg-black text-white px-4 py-2">
-              <span>🎥 Project Preview</span>
-              <button onClick={() => setSelectedVideo(null)}>✖</button>
+              <span className="flex items-center gap-2"><FaVideo /> Project Preview</span>
+              <button onClick={() => setSelectedVideo(null)}><FaTimes /></button>
             </div>
             <iframe
               src={selectedVideo}

@@ -132,9 +132,9 @@ const About = () => {
 >
   <Link
     to="/khs"
-    className="inline-block bg-gradient-to-r from-cyan-500 via-emerald-500 to-teal-500 px-5 py-2 rounded-xl font-medium text-white shadow-lg hover:brightness-110 transition"
+    className="bg-gradient-to-r from-cyan-500 via-emerald-500 to-teal-500 px-5 py-2 rounded-xl font-medium text-white shadow-lg hover:brightness-110 transition flex items-center gap-2"
   >
-    🎓 Lihat KHS Saya
+    <FaGraduationCap /> Lihat KHS Saya
   </Link>
 </motion.div>
   </div>

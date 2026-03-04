@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navLinks } from "../constants/navlinks";
-import { FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { FaInstagram, FaTimes, FaBars } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -105,10 +106,10 @@ const Navbar = () => {
         <div className="md:hidden relative" ref={menuRef}>
           <motion.button
             onClick={() => setToggle(!toggle)}
-            className="text-2xl focus:outline-none"
+            className="text-2xl focus:outline-none text-white"
             whileTap={{ scale: 0.95 }}
           >
-            {toggle ? "✖" : "☰"}
+            {toggle ? <FaTimes /> : <FaBars />}
           </motion.button>
 
           {/* Dropdown Menu Mobile */}

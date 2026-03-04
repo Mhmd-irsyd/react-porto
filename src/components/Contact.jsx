@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaGithub, FaLinkedin, FaLocationArrow } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaLocationArrow, FaMailBulk, FaHandPointDown, FaStar } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast";
 import emailjs from "@emailjs/browser";
 
@@ -35,7 +35,11 @@ const Contact = () => {
       )
       .then(() => {
         setLoading(false);
-        toast.success("Pesan berhasil dikirim! ✨");
+        toast.success(
+          <div className="flex items-center gap-2">
+            Pesan berhasil dikirim! <FaStar className="text-yellow-400" />
+          </div>
+        );
         setForm({ name: "", email: "", message: "" });
       })
       .catch((error) => {
@@ -55,9 +59,9 @@ const Contact = () => {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl font-bold mb-2">📬 Let’s Connect</h2>
-        <p className="text-gray-300 max-w-xl mx-auto">
-          Punya project atau ingin ngobrol santai? Kirimkan pesanmu melalui form berikut ini 👇
+        <h2 className="text-4xl font-bold mb-2 flex items-center justify-center gap-2"><FaMailBulk /> Let's Connect</h2>
+        <p className="text-gray-300 max-w-xl mx-auto flex items-center justify-center gap-2">
+          Punya project atau ingin ngobrol santai? Kirimkan pesanmu melalui form berikut ini <FaHandPointDown className="text-xl" />
         </p>
       </motion.div>
 

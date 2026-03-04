@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { IoHandRightOutline } from "react-icons/io5";
 import StikerPhoto from "../assets/irsyad.png";
 
 const Hero = () => {
@@ -79,7 +80,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex-1 text-center lg:text-left order-2 lg:order-1"
         >
-          <p className="text-base sm:text-lg mb-2 text-white">👋 Hi, I'm</p>
+          <p className="text-base sm:text-lg mb-2 text-white flex items-center justify-center lg:justify-start gap-2"><IoHandRightOutline className="text-xl" /> Hi, I'm</p>
 
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight">
             <span className="text-emerald-400 drop-shadow">Muhammad Irsyad</span>
