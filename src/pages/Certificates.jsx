@@ -1,5 +1,6 @@
-import React from "react";
 import { motion } from "framer-motion";
+import ParallaxSection from "../components/ParallaxSection";
+import Reveal from "../components/Reveal";
 import img1 from "../assets/certificate1.png";
 import img2 from "../assets/certificate2.png";
 import img3 from "../assets/certificate3.png";
@@ -31,21 +32,21 @@ const certificates = [
     image: img3,
   },
   {
-    title: " Program Analyst (Software Development)",
-    issuer: "LSP UBSI, under license of BNSP (Badan Nasional Sertifikasi Profesi)",
+    title: "Program Analyst (Software Development)",
+    issuer: "LSP UBSI under license of BNSP",
     date: "February,05 2025",
     link: "/certificates/certificate4.pdf",
     image: img4,
   },
   {
     title: "Intermediate Network Administrator",
-    issuer: "LSP UBSI, under license of BNSP (Badan Nasional Sertifikasi Profesi)",
+    issuer: "LSP UBSI under license of BNSP",
     date: "February,05 2025",
     link: "/certificates/certificate5.pdf",
     image: img5,
   },
   {
-    title: "Front-End Mobile Web App Development Building Management",
+    title: "Front-End Mobile Web App Development",
     issuer: "PT. AGRINAS PANGAN NUSANTARA",
     date: "July,08 2025",
     link: "/certificates/certificate6.pdf",
@@ -53,7 +54,7 @@ const certificates = [
   },
   {
     title: "Introduction to cybersecurity",
-    issuer: "cisco networking academy",
+    issuer: "Cisco Networking Academy",
     date: "June,29 2024",
     link: "/certificates/certificate7.pdf",
     image: img7,
@@ -62,82 +63,46 @@ const certificates = [
 
 const Certificates = () => {
   return (
-    <div className="relative min-h-screen px-6 py-16 bg-gradient-to-br from-[#1e3a8a] via-emerald-900 to-slate-900 text-white overflow-hidden">
-      
-      {/* 🫧 Gelembung Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {[{ size: 50, left: "10%", duration: "8s" },
-          { size: 60, left: "30%", duration: "10s" },
-          { size: 40, left: "60%", duration: "12s" },
-          { size: 70, left: "80%", duration: "14s" },
-        ].map((bubble, idx) => (
-         <div
-  key={idx}
-  className="bg-white opacity-20 absolute rounded-full"
-  style={{
-    width: `${bubble.size}px`,
-    height: `${bubble.size}px`,
-    left: bubble.left,
-    top: "-50px", // <-- ubah ini, bukan bottom
-    animation: `bubbleMove ${bubble.duration} infinite linear`,
-  }}
-/>
-        ))}
-      </div>
+    <section className="min-h-screen px-6 py-16">
+      <ParallaxSection strength={18}>
+        <Reveal className="text-center mb-10">
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">My Certificates</h1>
+          <p className="mt-2 text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            Daftar sertifikat pelatihan sebagai bagian dari pengembangan diri dan peningkatan kompetensi.
+          </p>
+        </Reveal>
+      </ParallaxSection>
 
-      {/* Judul dan Deskripsi */}
-      <motion.h1
-        className="text-4xl font-bold text-center mb-2 z-10 relative"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        My Certificates
-      </motion.h1>
-
-      <motion.p
-        className="text-center text-emerald-200 mb-10 z-10 relative"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-      >
-        Daftar sertifikat pelatihan yang telah saya ikuti sebagai bagian dari pengembangan diri dan peningkatan kompetensi.
-      </motion.p>
-
-      {/* Grid Sertifikat */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10">
-        {certificates.map((cert, index) => (
-          <motion.div
-            key={index}
-            className="bg-white/5 shadow-lg rounded-2xl border border-white/10 transition hover:shadow-emerald-400/30"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.4 }}
-          >
-            <img
-              src={cert.image}
-              alt={cert.title}
-              className="w-full h-40 object-cover object-center"
-              loading="lazy"
-            />
-            <div className="p-6">
-              <h3 className="text-lg font-semibold mb-1">{cert.title}</h3>
-              <p className="text-sm text-gray-300 mb-2">{cert.issuer}</p>
-              <p className="text-sm text-gray-400 mb-4">{cert.date}</p>
-              <a
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-white text-black px-4 py-2 text-sm rounded-full hover:bg-gray-200 transition"
-              >
-                View Certificate
-              </a>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+      <ParallaxSection strength={24}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {certificates.map((cert, index) => (
+            <motion.article
+              key={cert.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.45, delay: index * 0.05 }}
+              className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm"
+            >
+              <img src={cert.image} alt={cert.title} className="w-full h-44 object-cover" loading="lazy" />
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{cert.title}</h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{cert.issuer}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">{cert.date}</p>
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex mt-4 px-4 py-2 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm hover:opacity-90 transition"
+                >
+                  View Certificate
+                </a>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </ParallaxSection>
+    </section>
   );
 };
 

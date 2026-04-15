@@ -1,94 +1,75 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { navLinks } from "../constants/navlinks";
-import { FaInstagram, FaTimes, FaBars } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
+import { FaBars, FaInstagram, FaMoon, FaSun, FaTimes } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { navLinks } from "../constants/navlinks";
+import { scrollToSection } from "../utils/scrollToSection";
+import { applyTheme, getInitialTheme, storeTheme } from "../utils/theme";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  const menuRef = useRef();
+  const [theme, setTheme] = useState(getInitialTheme());
+  const menuRef = useRef(null);
+  const location = useLocation();
 
-  // Deteksi scroll agar navbar bisa blur/background berubah
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolling(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolling(window.scrollY > 8);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Deteksi klik di luar menu untuk menutup dropdown
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    applyTheme(theme);
+    storeTheme(theme);
+  }, [theme]);
+
+  useEffect(() => {
+    const onClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setToggle(false);
       }
     };
 
     if (toggle) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("mousedown", onClickOutside);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", onClickOutside);
     };
   }, [toggle]);
 
+  const handleSectionClick = (link) => {
+    setActive(link.title);
+
+    if (location.pathname === "/") {
+      scrollToSection(link.id);
+      return;
+    }
+
+    localStorage.setItem("scrollTo", link.id);
+  };
+
+  const activeClass = "text-sky-600 dark:text-sky-400";
+  const idleClass = "text-slate-600 dark:text-slate-300";
+
   return (
     <motion.nav
-      className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
-        scrolling ? "bg-blue-800 backdrop-blur-lg" : "bg-transparent"
-      }`}
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      initial={{ y: -32, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`fixed top-0 left-0 w-full z-40 backdrop-blur bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800 transition-all duration-300 ${scrolling ? "shadow-md" : "shadow-none"}`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Kiri - Logo */}
-        <h1 className="text-xl font-bold text-white">Syad.dev</h1>
-
-        {/* Tengah - Nav Links Desktop */}
-        <ul className="hidden md:flex gap-8">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-             <Link
-  to="/"
-  onClick={() => {
-    localStorage.setItem("scrollTo", link.id);
-    setActive(link.title);
-  }}
-  className={`${
-    active === link.title ? "text-blue-600" : "text-gray-200"
-  } hover:text-blue-500 transition duration-300 font-medium`}
->
-  {link.title}
-</Link>
-
-            </li>
-          ))}
-         <li>
-  <Link
-    to="/certificates"
-    onClick={() => setActive("Certificates")}
-    className={`${
-      active === "Certificates" ? "text-blue-600" : "text-gray-200"
-    } hover:text-blue-500 transition duration-300 font-medium`}
-  >
-    Certificates
-  </Link>
-</li>
-        </ul>
-
-        {/* Kanan - Ikon Sosial Desktop */}
-        <div className="hidden md:flex gap-4 text-xl text-gray-200">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+        <div className="flex items-center gap-5 text-xl text-slate-600 dark:text-slate-300">
           <a
             href="https://www.instagram.com/muhmd.irsyd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-pink-500 transition duration-300"
+            className="hover:text-slate-900 dark:hover:text-white transition-colors duration-300"
           >
             <FaInstagram />
           </a>
@@ -96,74 +77,108 @@ const Navbar = () => {
             href="https://x.com/Muhamma75082480"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-black transition duration-300"
+            className="hover:text-slate-900 dark:hover:text-white transition-colors duration-300"
           >
             <FaXTwitter />
           </a>
         </div>
 
-        {/* Tombol Burger + Menu Mobile */}
-        <div className="md:hidden relative" ref={menuRef}>
+        <ul className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              <Link
+                to="/"
+                onClick={() => handleSectionClick(link)}
+                className={`${active === link.title ? activeClass : idleClass} hover:text-slate-900 dark:hover:text-slate-100 transition duration-200 text-sm font-medium`}
+              >
+                {link.title}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <Link
+              to="/certificates"
+              onClick={() => setActive("Certificates")}
+              className={`${active === "Certificates" ? activeClass : idleClass} hover:text-slate-900 dark:hover:text-slate-100 transition duration-200 text-sm font-medium`}
+            >
+              Certificates
+            </Link>
+          </li>
+        </ul>
+
+        <div className="hidden md:flex items-center gap-4 text-lg text-slate-600 dark:text-slate-300">
+          <button
+            type="button"
+            onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+            aria-label="Toggle theme"
+            className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900 transition inline-flex items-center justify-center"
+          >
+            {theme === "dark" ? <FaSun size={14} /> : <FaMoon size={14} />}
+          </button>
+        </div>
+
+        <div className="md:hidden relative flex items-center gap-2" ref={menuRef}>
+          <button
+            type="button"
+            onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+            aria-label="Toggle theme"
+            className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900 transition inline-flex items-center justify-center"
+          >
+            {theme === "dark" ? <FaSun size={14} /> : <FaMoon size={14} />}
+          </button>
+
           <motion.button
-            onClick={() => setToggle(!toggle)}
-            className="text-2xl focus:outline-none text-white"
+            onClick={() => setToggle((prev) => !prev)}
+            className="text-slate-900 dark:text-slate-100 text-2xl"
             whileTap={{ scale: 0.95 }}
           >
             {toggle ? <FaTimes /> : <FaBars />}
           </motion.button>
 
-          {/* Dropdown Menu Mobile */}
           <AnimatePresence>
             {toggle && (
               <motion.div
-                key="mobile-menu"
-                className="absolute right-0 top-16 bg-white rounded-lg shadow-lg p-6 w-52 max-w-xs"
-                initial={{ opacity: 0, y: -20 }}
+                className="absolute right-0 top-14 w-56 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg p-4"
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
               >
-                <ul className="flex flex-col gap-4 mb-4">
+                <ul className="flex flex-col gap-3 mb-4">
                   {navLinks.map((link) => (
                     <li key={link.id}>
-                     <Link
-  to="/"
-  onClick={() => {
-    localStorage.setItem("scrollTo", link.id);
-    setActive(link.title);
-    setToggle(false); // close burger menu after click
-  }}
-  className={`${
-    active === link.title ? "text-blue-600" : "text-gray-700"
-  } hover:text-blue-500 transition duration-300 font-medium`}
->
-  {link.title}
-</Link>
-
+                      <Link
+                        to="/"
+                        onClick={() => {
+                          handleSectionClick(link);
+                          setToggle(false);
+                        }}
+                        className={`${active === link.title ? activeClass : "text-slate-700 dark:text-slate-200"} hover:text-slate-900 dark:hover:text-slate-100 text-sm font-medium transition duration-200`}
+                      >
+                        {link.title}
+                      </Link>
                     </li>
                   ))}
-                 <li>
-  <Link
-    to="/certificates"
-    onClick={() => {
-      setActive("Certificates");
-      setToggle(false);
-    }}
-    className={`${
-      active === "Certificates" ? "text-blue-600" : "text-gray-700"
-    } hover:text-blue-500 transition duration-300 font-medium`}
-  >
-    Certificates
-  </Link>
-</li>
-
+                  <li>
+                    <Link
+                      to="/certificates"
+                      onClick={() => {
+                        setActive("Certificates");
+                        setToggle(false);
+                      }}
+                      className={`${active === "Certificates" ? activeClass : "text-slate-700 dark:text-slate-200"} hover:text-slate-900 dark:hover:text-slate-100 text-sm font-medium transition duration-200`}
+                    >
+                      Certificates
+                    </Link>
+                  </li>
                 </ul>
-                <div className="flex gap-4 text-xl text-gray-700 justify-center">
+
+                <div className="flex justify-center gap-4 text-slate-600 dark:text-slate-300">
                   <a
                     href="https://www.instagram.com/muhmd.irsyd/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-pink-500 transition duration-300"
+                    className="hover:text-slate-900 dark:hover:text-slate-100"
                   >
                     <FaInstagram />
                   </a>
@@ -171,7 +186,7 @@ const Navbar = () => {
                     href="https://x.com/Muhamma75082480"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-black transition duration-300"
+                    className="hover:text-slate-900 dark:hover:text-slate-100"
                   >
                     <FaXTwitter />
                   </a>

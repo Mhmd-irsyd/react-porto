@@ -1,28 +1,40 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
+import { FaBriefcase, FaExternalLinkAlt, FaGithub, FaMobileAlt } from "react-icons/fa";
+import { Tooltip } from "react-tooltip";
 import {
-  FaReact, FaHtml5, FaCss3Alt, FaGithub, FaExternalLinkAlt, FaBriefcase, FaMobileAlt, FaVideo, FaTimes
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
 } from "react-icons/fa";
 import {
-  SiTailwindcss, SiFramer, SiJavascript,SiLaravel, SiDotnet, SiUnity, SiMariadb, SiDart, SiFlutter, SiFirebase,
+  SiTailwindcss,
+  SiFramer,
+  SiJavascript,
+  SiLaravel,
+  SiDotnet,
+  SiUnity,
+  SiMariadb,
+  SiDart,
+  SiFlutter,
+  SiFirebase,
 } from "react-icons/si";
-import { Tooltip } from "react-tooltip";
+import Reveal from "./Reveal";
 
 import ecommerceImage from "../assets/e-commerce.jpg";
 import portogolioImage from "../assets/portfolio.jpg";
 import tokoonlineImage from "../assets/tokoonline.jpg";
 import klinikImage from "../assets/klinikapp.jpg";
-import AugmentedRealityImage from "../assets/augmentedreality.jpg";
+import augmentedRealityImage from "../assets/augmentedreality.jpg";
 import buildingManagementImage from "../assets/buildingmanagement.jpg";
 
-// === ENUM & CONSTANT ===
 const PROJECT_TYPES = ["Frontend", "Fullstack", "Mobile"];
 
 const typeColors = {
-  Frontend: "bg-indigo-500",
-  Fullstack: "bg-emerald-500",
-  Mobile: "bg-orange-500",
+  Frontend: "bg-sky-500",
+  Fullstack: "bg-indigo-500",
+  Mobile: "bg-slate-700",
 };
 
 const techIcons = {
@@ -34,14 +46,13 @@ const techIcons = {
   Csharp: <SiDotnet />,
   Unity: <SiUnity />,
   MariaDB: <SiMariadb />,
-   Dart: <SiDart />,
+  Dart: <SiDart />,
   Flutter: <SiFlutter />,
   Firebase: <SiFirebase />,
   HTML: <FaHtml5 />,
   CSS: <FaCss3Alt />,
 };
 
-// === PROJECT DATA ===
 const projectsData = [
   {
     title: "Modern Portfolio",
@@ -63,7 +74,7 @@ const projectsData = [
   },
   {
     title: "E-commerce App",
-    description: "e-commerce app for browsing and purchasing accessories, featuring user authentication, shopping cart, and secure checkout functionality.",
+    description: "E-commerce app with auth, cart, and secure checkout.",
     tech: ["React", "Tailwind", "Firebase"],
     image: ecommerceImage,
     demo: "https://loginhub-56411.firebaseapp.com/",
@@ -72,8 +83,8 @@ const projectsData = [
   },
   {
     title: "Building Management",
-    description: "A mobile app for managing building assets, where staff can upload maintenance proof easily.",
-    tech: ["React", "Tailwind", "JavaScript", "laravel", "MariaDB"],
+    description: "Web app for building maintenance submissions and monitoring.",
+    tech: ["React", "Tailwind", "JavaScript", "Laravel", "MariaDB"],
     image: buildingManagementImage,
     demo: "https://bm.agrinaspangan.id/login",
     repo: "https://github.com/Mhmd-irsyd/BMYK",
@@ -81,37 +92,29 @@ const projectsData = [
   },
   {
     title: "Klinik Mobile",
-    description: "A mobile health app designed to help users access simple clinical features",
+    description: "A mobile health app for basic clinical workflows.",
     tech: ["Flutter", "Dart"],
     image: klinikImage,
     repo: "https://github.com/Mhmd-irsyd/klmpk_mble_prgramng",
     apk: "https://drive.google.com/file/d/1fZrw2X-oEfNDD34zbQ7qqLsn6A1C6DM7/view?usp=sharing",
     type: "Mobile",
   },
-   {
+  {
     title: "Augmented Reality App",
-    description: "A mobile augmented reality app that brings animal characters to life with 3D animations for a fun experience.",
-    tech: ["Csharp", "Vuforia", "Unity"],
-    image: AugmentedRealityImage,
+    description: "An AR app showing animated animals in 3D.",
+    tech: ["Csharp", "Unity"],
+    image: augmentedRealityImage,
     repo: "https://github.com/Mhmd-irsyd/ar_animated",
     apk: "https://drive.google.com/file/d/1fXbIf8udgtB6Hd1oVKt49LJQgHgPRxF3/view?usp=sharing",
     type: "Mobile",
   },
 ];
 
-// === MAIN COMPONENT ===
 const Projects = () => {
   const [active, setActive] = useState("All");
-  const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const sortedProjects = [...projectsData].sort((a, b) =>
-    a.type.localeCompare(b.type)
-  );
-
-  const filteredProjects =
-    active === "All"
-      ? sortedProjects
-      : sortedProjects.filter((p) => p.type === active);
+  const sortedProjects = [...projectsData].sort((a, b) => a.type.localeCompare(b.type));
+  const filteredProjects = active === "All" ? sortedProjects : sortedProjects.filter((p) => p.type === active);
 
   const categoryCounts = {
     All: projectsData.length,
@@ -122,149 +125,80 @@ const Projects = () => {
   };
 
   return (
-    <section
-      id="projects"
-      className="py-20 text-white bg-gradient-to-br from-[#0f172a] via-[#064e3b] to-[#1e3a8a]"
-    >
-      <div className="container mx-auto px-4">
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-2 flex items-center justify-center gap-2"><FaBriefcase /> My Projects</h2>
-          <p className="text-gray-300 max-w-xl mx-auto">
-            Projects I've built with love — covering frontend, fullstack, and mobile.
+    <section id="projects" className="scroll-mt-24 py-20">
+      <div className="max-w-7xl mx-auto px-6">
+        <Reveal className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 flex items-center justify-center gap-2">
+            <FaBriefcase /> My Projects
+          </h2>
+          <p className="mt-2 text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            A selection of frontend, fullstack, and mobile projects.
           </p>
-        </motion.div>
+        </Reveal>
 
-        {/* Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
+        <Reveal delay={0.05} className="flex flex-wrap justify-center gap-3 mb-10">
           {["All", ...PROJECT_TYPES].map((cat) => (
             <button
               key={cat}
               onClick={() => setActive(cat)}
-              className={`px-4 py-1 rounded-full border ${
+              className={`px-4 py-1.5 rounded-full border text-sm transition ${
                 active === cat
-                  ? "bg-white text-black"
-                  : "bg-transparent text-white border-white"
-              } transition duration-300 text-sm`}
+                  ? "bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 border-slate-900 dark:border-slate-100"
+                  : "border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900"
+              }`}
             >
               {cat} ({categoryCounts[cat]})
             </button>
           ))}
-        </div>
+        </Reveal>
 
-        {/* Projects Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              custom={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Tilt
-                glareEnable
-                glareMaxOpacity={0.3}
-                glareColor="#ffffff"
-                className="rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md shadow-xl border border-white/10"
-              >
+            <Reveal key={project.title} delay={index * 0.05}>
+              <Tilt className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
                 <div className="relative">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover object-center"
-                  />
-                  <span
-                    className={`absolute top-2 left-2 text-xs px-2 py-1 rounded-full text-white ${typeColors[project.type]} flex items-center gap-1`}
-                  >
-                    {project.type === "Mobile" && <FaMobileAlt />}
+                  <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+                  <span className={`absolute top-3 left-3 text-xs px-2 py-1 rounded-full text-white ${typeColors[project.type]}`}>
                     {project.type}
                   </span>
                 </div>
 
                 <div className="p-5">
-                  <h3 className="text-xl font-semibold mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-gray-300 mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex items-center gap-2 text-lg mb-3 flex-wrap">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{project.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{project.description}</p>
+
+                  <div className="mt-3 flex flex-wrap items-center gap-2 text-lg text-slate-600 dark:text-slate-300">
                     {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        data-tooltip-id={tech}
-                        className="hover:scale-110 transition"
-                      >
-                        {techIcons[tech]}
+                      <span key={tech} data-tooltip-id={tech} className="hover:scale-110 transition">
+                        {techIcons[tech] || tech}
                         <Tooltip id={tech} place="top" content={tech} />
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex gap-3 flex-wrap">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        className="flex items-center gap-1 px-3 py-1 bg-white text-black rounded-full text-sm hover:bg-gray-200 transition"
-                      >
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm inline-flex items-center gap-1 hover:opacity-90 transition">
                         <FaExternalLinkAlt /> Demo
                       </a>
                     )}
                     {project.repo && (
-                      <a
-                        href={project.repo}
-                        target="_blank"
-                        className="flex items-center gap-1 px-3 py-1 bg-white text-black rounded-full text-sm hover:bg-gray-200 transition"
-                      >
+                      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm inline-flex items-center gap-1 hover:opacity-90 transition">
                         <FaGithub /> GitHub
                       </a>
                     )}
                     {project.apk && (
-                      <a
-                        href={project.apk}
-                        target="_blank"
-                        className="flex items-center gap-1 px-3 py-1 bg-green-500 text-white rounded-full text-sm hover:bg-green-400 transition"
-                      >
-                        <FaMobileAlt /> Install App
+                      <a href={project.apk} target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm inline-flex items-center gap-1 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                        <FaMobileAlt /> Install
                       </a>
                     )}
                   </div>
                 </div>
               </Tilt>
-            </motion.div>
+            </Reveal>
           ))}
-        </motion.div>
-      </div>
-
-      {/* Video Modal */}
-      {selectedVideo && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-2xl w-full overflow-hidden">
-            <div className="flex justify-between items-center bg-black text-white px-4 py-2">
-              <span className="flex items-center gap-2"><FaVideo /> Project Preview</span>
-              <button onClick={() => setSelectedVideo(null)}><FaTimes /></button>
-            </div>
-            <iframe
-              src={selectedVideo}
-              title="Project Preview"
-              className="w-full h-[300px] sm:h-[450px]"
-              allowFullScreen
-            ></iframe>
-          </div>
         </div>
-      )}
+      </div>
     </section>
   );
 };

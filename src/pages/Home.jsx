@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { scrollToSection } from "../utils/scrollToSection";
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
+import ParallaxSection from "../components/ParallaxSection";
+
+const Divider = () => (
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="h-px bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent" />
+  </div>
+);
 
 const Home = () => {
   const location = useLocation(); // ✅ Hook untuk deteksi perubahan route
@@ -19,29 +25,31 @@ const Home = () => {
   }, [location]); // ✅ Tambahkan dependency agar useEffect jalan setiap path berubah
 
   return (
-    <div className="overflow-x-hidden">
-      {/* Navbar tetap di atas tanpa section karena tidak perlu scroll */}
-      <Navbar />
-
-      {/* Hero Section */}
-      <section id="home">
+    <div className="overflow-clip">
+      <ParallaxSection strength={28}>
         <Hero />
-      </section>
+      </ParallaxSection>
 
-      {/* About Section */}
-      <section id="about">
+      <ParallaxSection strength={8}>
+        <Divider />
+      </ParallaxSection>
+      <ParallaxSection strength={-30}>
         <About />
-      </section>
+      </ParallaxSection>
 
-      {/* Projects Section */}
-      <section id="projects">
+      <ParallaxSection strength={8}>
+        <Divider />
+      </ParallaxSection>
+      <ParallaxSection strength={32}>
         <Projects />
-      </section>
+      </ParallaxSection>
 
-      {/* Contact Section */}
-      <section id="contact">
+      <ParallaxSection strength={8}>
+        <Divider />
+      </ParallaxSection>
+      <ParallaxSection strength={-28}>
         <Contact />
-      </section>
+      </ParallaxSection>
     </div>
   );
 };

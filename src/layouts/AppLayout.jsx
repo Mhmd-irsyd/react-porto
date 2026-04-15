@@ -4,9 +4,9 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const AppLayout = () => {
   return (
-    <>
+    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       <Navbar />
-      <main>
+      <main className="pt-20">
         <Outlet />
       </main>
 
@@ -15,11 +15,11 @@ const AppLayout = () => {
         href="https://wa.me/089654619089"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 bg-green-500 p-3 rounded-full shadow-xl hover:scale-110 transition z-50"
+        className="fixed bottom-5 right-5 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 p-3 rounded-full shadow-lg hover:scale-105 transition z-50"
       >
         <FaWhatsapp size={24} />
       </a>
-    </>
+    </div>
   );
 };
 

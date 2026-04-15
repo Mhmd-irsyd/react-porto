@@ -2,30 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased;
+  }
+}
+
+html, body {
+  overflow-x: clip;
+}
+
 html {
   scroll-behavior: smooth;
-}
-
-.motion-element {
-  will-change: transform, opacity;
-}
-
-/* Bubbles dari atas ke bawah */
-@keyframes bubbleMove {
-  0% {
-    transform: translateY(-100px);
-    opacity: 0.4;
-  }
-  100% {
-    transform: translateY(120vh);
-    opacity: 0;
-  }
-}
-
-.bubble {
-  pointer-events: none;
-  position: absolute;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.4);
-  animation: bubbleMove 8s infinite linear;
 }

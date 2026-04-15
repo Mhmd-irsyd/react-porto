@@ -1,141 +1,79 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { IoHandRightOutline } from "react-icons/io5";
-import StikerPhoto from "../assets/irsyad.png";
+import Reveal from "./Reveal";
 
 const Hero = () => {
-   const [openCV, setOpenCV] = useState(false);
+  const [openCV, setOpenCV] = useState(false);
   const cvRef = useRef(null);
 
   useEffect(() => {
-    function handleClickOutside(event) {
+    const onClick = (event) => {
       if (cvRef.current && !cvRef.current.contains(event.target)) {
         setOpenCV(false);
       }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
     };
+
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
   }, []);
 
   return (
-    <section
-      id="home"
-      className="snap-start relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1e3a8a] via-emerald-900 to-slate-900 pt-28 md:pt-36 overflow-hidden"
-    >
-      {/* Bubbles Effect */}
-      <div className="absolute top-0 left-0 w-full h-full z-0">
-        {[
-          { size: 50, left: "10%", duration: "8s" },
-          { size: 60, left: "30%", duration: "10s" },
-          { size: 40, left: "60%", duration: "12s" },
-          { size: 70, left: "80%", duration: "14s" },
-        ].map((bubble, idx) => (
-          <div
-            key={idx}
-            className="bg-white opacity-20 absolute rounded-full"
-            style={{
-              width: `${bubble.size}px`,
-              height: `${bubble.size}px`,
-              left: bubble.left,
-              top: "-50px",
-              animation: `bubbleMove ${bubble.duration} infinite linear`,
-            }}
-          />
-        ))}
-      </div>
+    <section id="home" className="scroll-mt-24 min-h-screen py-20 flex items-center">
+      <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center">
+        <Reveal>
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 flex items-center justify-center gap-2 mb-2">
+            <IoHandRightOutline /> Hi, I&apos;m
+          </p>
 
-      {/* Animated Gradient Background Elements */}
-      <motion.div
-        className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-green-500 to-green-700 rounded-full blur-3xl opacity-30 -z-10 pointer-events-none"
-        animate={{ x: [0, 150, 0], y: [0, 100, 0] }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          repeatType: "loop",
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-green-600 to-green-800 rounded-full blur-3xl opacity-30 -z-10 pointer-events-none"
-        animate={{ x: [0, -150, 0], y: [0, -100, 0] }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          repeatType: "loop",
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-12 z-10 relative">
-        {/* Left Text Section */}
-        <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex-1 text-center lg:text-left order-2 lg:order-1"
-        >
-          <p className="text-base sm:text-lg mb-2 text-white flex items-center justify-center lg:justify-start gap-2"><IoHandRightOutline className="text-xl" /> Hi, I'm</p>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight">
-            <span className="text-emerald-400 drop-shadow">Muhammad Irsyad</span>
+          <h1 className="text-4xl md:text-7xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 leading-tight">
+            Muhammad Irsyad
           </h1>
 
-          <h2 className="text-lg sm:text-xl lg:text-2xl mt-2 text-emerald-200">
+          <h2 className="text-xl md:text-3xl mt-4 text-sky-600 dark:text-sky-400 font-medium">
             <Typewriter
-              words={[
-                "Frontend Developer",
-                "React Enthusiast",
-                "UI/UX Explorer",
-              ]}
+              words={["Frontend Developer", "React Enthusiast", "UI Explorer"]}
               loop
               cursor
               cursorStyle="|"
               typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={2000}
+              deleteSpeed={45}
+              delaySpeed={1800}
             />
           </h2>
 
-          <p className="mt-4 text-gray-100 text-sm sm:text-base max-w-md sm:max-w-lg md:mx-0 mx-auto">
-            I love crafting clean, responsive, and modern interfaces with
-            delightful user experiences.
+          <p className="mt-6 text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            I build clean, responsive interfaces with a focus on readability, performance,
+            and delightful interactions.
           </p>
 
-          {/* CTA Buttons */}
-         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 relative">
-            {/* Hire Me */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4" ref={cvRef}>
             <a
               href="https://mail.google.com/mail/?view=cm&to=irsyadmuhammad4321@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-emerald-500 text-white px-6 py-3 rounded-xl hover:bg-emerald-600 transition duration-300"
+              className="px-6 py-3 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm md:text-base font-medium hover:scale-105 transition-transform"
             >
               Hire Me
             </a>
 
-            {/* CV Dropdown */}
-           <div className="relative block text-left" ref={cvRef}>
-
+            <div className="relative">
               <button
-                onClick={() => setOpenCV(!openCV)}
-                className="border border-emerald-400 text-emerald-400 px-6 py-3 rounded-xl hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition duration-300"
+                onClick={() => setOpenCV((prev) => !prev)}
+                className="px-6 py-3 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm md:text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
               >
                 View Resume/CV
               </button>
 
               {openCV && (
-                <div className="absolute mt-2 w-40 bg-white border border-gray-200 rounded-xl shadow-lg">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg overflow-hidden z-50 text-left">
                   <a
                     href="/CV-Indonesia2.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block px-4 py-2 hover:bg-gray-100 text-gray-700"
+                    className="block px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
                   >
                     CV (Indonesia)
                   </a>
@@ -143,87 +81,24 @@ const Hero = () => {
                     href="/Resume-English2.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block px-4 py-2 hover:bg-gray-100 text-gray-700"
+                    className="block px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 border-t border-slate-100 dark:border-slate-800 transition"
                   >
-                    RESUME (English)
+                    Resume (English)
                   </a>
                 </div>
               )}
             </div>
           </div>
 
-          {/* Social Icons */}
-          <div className="mt-6 flex justify-center lg:justify-start gap-4 text-xl sm:text-2xl text-white">
-            <a
-              href="https://www.linkedin.com/in/muhammad-irsyad-032051258/"
-              className="hover:text-blue-500 transition"
-            >
+          <div className="mt-10 flex items-center justify-center gap-6 text-2xl text-slate-600 dark:text-slate-300">
+            <a href="https://www.linkedin.com/in/muhammad-irsyad-032051258/" className="hover:text-sky-600 dark:hover:text-sky-400 hover:scale-110 transition-all">
               <FaLinkedin />
             </a>
-            <a
-              href="https://github.com/Mhmd-irsyd"
-              className="hover:text-gray-300 transition"
-            >
+            <a href="https://github.com/Mhmd-irsyd" className="hover:text-slate-900 dark:hover:text-slate-100 hover:scale-110 transition-all">
               <FaGithub />
             </a>
           </div>
-        </motion.div>
-
-        {/* Center Image Section */}
-        <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="flex-1 flex justify-center order-1 lg:order-2 mb-8 lg:mb-0"
-        >
-          <div className="relative w-60 sm:w-72 md:w-80 lg:w-[400px] h-60 sm:h-72 md:h-80 lg:h-[400px] rounded-full ring-4 ring-gray-700 shadow-2xl hover:scale-105 transition duration-500 mx-auto">
-            <img
-              src={StikerPhoto}
-              alt="Irsyad Sticker"
-              className="w-full h-full object-cover rounded-full"
-            />
-          </div>
-        </motion.div>
-
-        {/* Welcome Section */}
-        <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-          className="flex-1 text-center lg:text-left order-3"
-        >
-          <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-4">
-            Welcome to My World of Front-End Development
-          </h3>
-          <p className="text-gray-300 text-sm sm:text-lg mb-4">
-            Let's build creative and interactive websites together.
-          </p>
-
-          <motion.div className="flex justify-center items-center gap-4 mt-8">
-            {[...Array(3)].map((_, i) => (
-              <motion.div
-                key={i}
-                className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full ${
-                  i === 0
-                    ? "bg-pink-400"
-                    : i === 1
-                    ? "bg-blue-400"
-                    : "bg-green-400"
-                } shadow-lg`}
-                animate={{
-                  y: [0, -15, 0],
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 10, -10, 0],
-                }}
-                transition={{
-                  duration: 2 + i,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
-          </motion.div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );
