@@ -64,7 +64,7 @@ const Hero = () => {
                 onClick={() => setOpenCV((prev) => !prev)}
                 className="px-6 py-3 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm md:text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
               >
-                View Resume/CV
+                View CV/Resume
               </button>
 
               {openCV && (
