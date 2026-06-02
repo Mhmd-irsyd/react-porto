@@ -75,7 +75,7 @@ const Hero = () => {
                     rel="noopener noreferrer"
                     className="block px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
                   >
-                    CV (Indonesia)
+                    CV
                   </a>
                   <a
                     href="/Resume.pdf"
@@ -83,7 +83,7 @@ const Hero = () => {
                     rel="noopener noreferrer"
                     className="block px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 border-t border-slate-100 dark:border-slate-800 transition"
                   >
-                    Resume (English)
+                    Resume
                   </a>
                 </div>
               )}
