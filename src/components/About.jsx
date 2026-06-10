@@ -34,7 +34,7 @@ const skills = [
 const experiences = [
   {
     title: "Front-End Developer Intern — PT. Nose Herbalindo",
-    time: "Oct 2025 - Present",
+    time: "Oct 2025 - May 2026",
     description:
       "Working with the Infant AI team on the design, development, and optimization of financial user interfaces for IFCNews, focusing on professional, low-latency data delivery for global investors.",
   },

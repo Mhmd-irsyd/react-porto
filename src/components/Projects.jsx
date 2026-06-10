@@ -28,11 +28,13 @@ import {
 import Reveal from "./Reveal";
 
 import ecommerceImage from "../assets/e-commerce.jpg";
-import portogolioImage from "../assets/portfolio.jpg";
+import portofolioImage from "../assets/portfolio.jpg";
 import tokoonlineImage from "../assets/tokoonline.jpg";
 import klinikImage from "../assets/klinikapp.jpg";
 import augmentedRealityImage from "../assets/augmentedreality.jpg";
 import buildingManagementImage from "../assets/buildingmanagement.jpg";
+import financialImage from "../assets/financialimage.jpg";
+import warehouseImage from "../assets/warehouseimage.jpg";
 
 const PROJECT_TYPES = ["Frontend", "Fullstack", "Mobile"];
 
@@ -68,7 +70,7 @@ const projectsData = [
     title: "Modern Portfolio",
     description: "A modern portfolio built with React and Tailwind.",
     tech: ["React", "Tailwind", "Framer Motion"],
-    image: portogolioImage,
+    image: portofolioImage,
     demo: "https://yourportfolio.com",
     repo: "https://github.com/Mhmd-irsyd/react-porto",
     type: "Frontend",
@@ -122,7 +124,7 @@ const projectsData = [
     title: "Financial Platform",
     description: "Platform berita finansial dengan rekomendasi dan sentimen pasar berbasis AI.",
     tech: ["React", "TypeScript", "FastAPI", "Tailwind", "MongoDB"],
-    image: portogolioImage,
+    image: financialImage,
     demo: "https://ifcnews.id/",
     type: "Fullstack",
   },
@@ -130,7 +132,7 @@ const projectsData = [
     title: "Warehouse Internal App",
     description: "Aplikasi internal inventaris gudang untuk memonitor stok barang masuk dan keluar.",
     tech: ["React", "JavaScript", "Tailwind", "SQLite", "Cloudflare"],
-    image: ecommerceImage,
+    image: warehouseImage,
     demo: "https://satglow.infantai.tech/login",
     type: "Fullstack",
   },
