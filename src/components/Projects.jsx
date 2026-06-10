@@ -19,6 +19,11 @@ import {
   SiDart,
   SiFlutter,
   SiFirebase,
+  SiTypescript,
+  SiFastapi,
+  SiMongodb,
+  SiSqlite,
+  SiCloudflare,
 } from "react-icons/si";
 import Reveal from "./Reveal";
 
@@ -51,6 +56,11 @@ const techIcons = {
   Firebase: <SiFirebase />,
   HTML: <FaHtml5 />,
   CSS: <FaCss3Alt />,
+  TypeScript: <SiTypescript />,
+  FastAPI: <SiFastapi />,
+  MongoDB: <SiMongodb />,
+  SQLite: <SiSqlite />,
+  Cloudflare: <SiCloudflare />,
 };
 
 const projectsData = [
@@ -107,6 +117,22 @@ const projectsData = [
     repo: "https://github.com/Mhmd-irsyd/ar_animated",
     apk: "https://drive.google.com/file/d/1fXbIf8udgtB6Hd1oVKt49LJQgHgPRxF3/view?usp=sharing",
     type: "Mobile",
+  },
+  {
+    title: "Financial Platform",
+    description: "Platform berita finansial dengan rekomendasi dan sentimen pasar berbasis AI.",
+    tech: ["React", "TypeScript", "FastAPI", "Tailwind", "MongoDB"],
+    image: portogolioImage,
+    demo: "https://ifcnews.id/",
+    type: "Fullstack",
+  },
+  {
+    title: "Warehouse Internal App",
+    description: "Aplikasi internal inventaris gudang untuk memonitor stok barang masuk dan keluar.",
+    tech: ["React", "JavaScript", "Tailwind", "SQLite", "Cloudflare"],
+    image: ecommerceImage,
+    demo: "https://satglow.infantai.tech/login",
+    type: "Fullstack",
   },
 ];
 
